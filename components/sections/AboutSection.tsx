@@ -1,12 +1,14 @@
-import SectionLabel     from "@/components/ui/SectionLabel"
-import FadeIn           from "@/components/ui/FadeIn"
-import LanguageStagger  from "@/components/ui/LanguageStagger"
+import SectionLabel    from "@/components/ui/SectionLabel"
+import FadeIn          from "@/components/ui/FadeIn"
+import LanguageStagger from "@/components/ui/LanguageStagger"
+import SectionArrow    from "@/components/ui/SectionArrow"
 
 export default function AboutSection() {
   return (
     <section
       id="about"
       aria-label="About"
+      className="relative"
       style={{ background: "linear-gradient(to bottom, #F7F5F0 0%, #F1EBE3 100%)" }}
     >
       <div className="max-w-5xl mx-auto px-6 py-24 lg:py-32">
@@ -66,6 +68,11 @@ export default function AboutSection() {
           </div>
         </div>
       </div>
+
+      <SectionArrow
+        targetId="contact"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+      />
     </section>
   )
 }

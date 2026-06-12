@@ -1,9 +1,10 @@
-import Navbar          from "@/components/layout/Navbar"
-import Footer          from "@/components/layout/Footer"
-import HeroSection     from "@/components/sections/HeroSection"
-import WorkSection     from "@/components/sections/WorkSection"
-import AboutSection    from "@/components/sections/AboutSection"
-import ContactSection  from "@/components/sections/ContactSection"
+import Navbar           from "@/components/layout/Navbar"
+import Footer           from "@/components/layout/Footer"
+import HeroSection      from "@/components/sections/HeroSection"
+import InsightsSection  from "@/components/sections/InsightsSection"
+import WorkSection      from "@/components/sections/WorkSection"
+import AboutSection     from "@/components/sections/AboutSection"
+import ContactSection   from "@/components/sections/ContactSection"
 
 /*
  * Sections are replaced phase by phase:
@@ -29,15 +30,13 @@ export default function Home() {
       <Navbar />
 
       <main id="main">
-        {/* ── Phase B ✓ ─────────────────────────────────────────── */}
         <HeroSection />
+        <InsightsSection />
 
-        {/* ── Phase C ✓ ─────────────────────────────────────────── */}
         <div id="work">
           <WorkSection />
         </div>
 
-        {/* ── Phase D ✓ ─────────────────────────────────────────── */}
         <AboutSection />
         <ContactSection />
       </main>

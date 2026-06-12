@@ -1,5 +1,6 @@
-import FadeIn    from "@/components/ui/FadeIn"
-import LivePulse from "@/components/ui/LivePulse"
+import FadeIn       from "@/components/ui/FadeIn"
+import LivePulse    from "@/components/ui/LivePulse"
+import SectionArrow from "@/components/ui/SectionArrow"
 import { projects } from "@/lib/projects"
 
 const p = projects.find((x) => x.id === "livecity")!
@@ -16,6 +17,7 @@ const CITIES = [
 export default function LiveCityScene() {
   return (
     <article
+      id="livecity"
       className="relative overflow-hidden min-h-screen"
       style={{
         background: "linear-gradient(135deg, #EEF2FF 0%, #E4ECFF 100%)",
@@ -91,6 +93,11 @@ export default function LiveCityScene() {
           <LiveCityVisual />
         </div>
       </div>
+
+      <SectionArrow
+        targetId="travelhub"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+      />
     </article>
   )
 }

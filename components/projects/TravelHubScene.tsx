@@ -1,4 +1,5 @@
-import FadeIn from "@/components/ui/FadeIn"
+import FadeIn       from "@/components/ui/FadeIn"
+import SectionArrow from "@/components/ui/SectionArrow"
 import { projects } from "@/lib/projects"
 
 const p = projects.find((x) => x.id === "travelhub")!
@@ -18,6 +19,7 @@ const B = (a: number) => `rgba(37,99,235,${a})`
 export default function TravelHubScene() {
   return (
     <article
+      id="travelhub"
       className="relative overflow-hidden min-h-screen"
       style={{
         background: "linear-gradient(160deg, #E8F4FF 0%, #EEF0FF 60%)",
@@ -93,6 +95,11 @@ export default function TravelHubScene() {
           <CompassVisual />
         </div>
       </div>
+
+      <SectionArrow
+        targetId="about"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+      />
     </article>
   )
 }

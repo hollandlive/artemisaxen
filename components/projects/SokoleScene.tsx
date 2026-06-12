@@ -1,4 +1,5 @@
-import FadeIn from "@/components/ui/FadeIn"
+import FadeIn       from "@/components/ui/FadeIn"
+import SectionArrow from "@/components/ui/SectionArrow"
 import { projects } from "@/lib/projects"
 
 const p = projects.find((x) => x.id === "sokole")!
@@ -8,6 +9,7 @@ const PALETTE = ["#F5EFE6", "#EDD5CA", "#D4B896", "#C9A84C"]
 export default function SokoleScene() {
   return (
     <article
+      id="sokole"
       className="relative overflow-hidden min-h-screen"
       style={{
         background: "linear-gradient(135deg, #FDF5EE 0%, #F8E8D5 100%)",
@@ -83,6 +85,11 @@ export default function SokoleScene() {
           <SokoleVisual />
         </div>
       </div>
+
+      <SectionArrow
+        targetId="livecity"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+      />
     </article>
   )
 }

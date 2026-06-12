@@ -12,12 +12,15 @@ const DESTINATIONS = [
   { label: "Tokyo",     cx: 318, cy: 150, opacity: 0.22 },
 ]
 
+/* Vivid blue for SVG elements on the light sky background */
+const B = (a: number) => `rgba(37,99,235,${a})`
+
 export default function TravelHubScene() {
   return (
     <article
       className="relative overflow-hidden min-h-screen"
       style={{
-        background: "linear-gradient(160deg, #1B3A5C 0%, #0F1923 60%)",
+        background: "linear-gradient(160deg, #E8F4FF 0%, #EEF0FF 60%)",
       }}
       aria-label={`Project: ${p.name}`}
     >
@@ -26,7 +29,10 @@ export default function TravelHubScene() {
         {/* ── Text column ──────────────────────────────────────── */}
         <div className="lg:w-5/12 lg:shrink-0">
           <FadeIn direction="up" delay={0}>
-            <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-travelhub-light">
+            <p
+              className="text-[11px] font-medium uppercase tracking-[0.14em]"
+              style={{ color: "#2563EB" }}
+            >
               03 / {p.category}
             </p>
           </FadeIn>
@@ -34,7 +40,7 @@ export default function TravelHubScene() {
           <FadeIn direction="up" delay={0.08}>
             <h2
               className="font-serif italic mt-4 leading-[0.95]"
-              style={{ fontSize: "var(--text-title)", color: "#EFF6FF" }}
+              style={{ fontSize: "var(--text-title)", color: "#0F2B5E" }}
             >
               {p.name}
             </h2>
@@ -45,7 +51,7 @@ export default function TravelHubScene() {
               className="font-serif mt-5 leading-snug"
               style={{
                 fontSize: "clamp(1.15rem, 2vw, 1.375rem)",
-                color: "rgba(239,246,255,0.50)",
+                color:    "rgba(15,43,94,0.65)",
               }}
             >
               {p.tagline}
@@ -55,7 +61,7 @@ export default function TravelHubScene() {
           <FadeIn direction="up" delay={0.20}>
             <p
               className="mt-6 text-[14px] leading-[1.8]"
-              style={{ color: "rgba(147,197,253,0.50)" }}
+              style={{ color: "rgba(30,80,160,0.60)" }}
             >
               {p.what}
             </p>
@@ -67,9 +73,10 @@ export default function TravelHubScene() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 mt-8 text-[13px] font-medium
-                         transition-opacity hover:opacity-60 text-travelhub-light"
+                         transition-opacity hover:opacity-60"
               style={{
-                borderBottom: "1px solid rgba(147,197,253,0.35)",
+                color:         "#2563EB",
+                borderBottom:  "1px solid rgba(37,99,235,0.35)",
                 paddingBottom: "1px",
               }}
             >
@@ -93,100 +100,56 @@ export default function TravelHubScene() {
 function CompassVisual() {
   return (
     <div className="relative w-[400px] h-[400px]">
-      <svg
-        className="w-full h-full"
-        viewBox="0 0 400 400"
-        fill="none"
-      >
+      <svg className="w-full h-full" viewBox="0 0 400 400" fill="none">
+
         {/* Concentric rings */}
         {COMPASS_RADII.map((r) => (
-          <circle
-            key={r}
-            cx="200"
-            cy="200"
-            r={r}
-            stroke="rgba(147,197,253,0.12)"
-            strokeWidth="1"
-          />
+          <circle key={r} cx="200" cy="200" r={r} stroke={B(0.15)} strokeWidth="1" />
         ))}
 
         {/* Axis crosshairs */}
-        <line
-          x1="200" y1="22" x2="200" y2="378"
-          stroke="rgba(147,197,253,0.08)"
-          strokeWidth="1"
-        />
-        <line
-          x1="22" y1="200" x2="378" y2="200"
-          stroke="rgba(147,197,253,0.08)"
-          strokeWidth="1"
-        />
+        <line x1="200" y1="22" x2="200" y2="378" stroke={B(0.10)} strokeWidth="1" />
+        <line x1="22"  y1="200" x2="378" y2="200" stroke={B(0.10)} strokeWidth="1" />
 
         {/* 45° diagonals */}
-        <line
-          x1="82" y1="82" x2="318" y2="318"
-          stroke="rgba(147,197,253,0.04)"
-          strokeWidth="1"
-        />
-        <line
-          x1="318" y1="82" x2="82" y2="318"
-          stroke="rgba(147,197,253,0.04)"
-          strokeWidth="1"
-        />
+        <line x1="82"  y1="82"  x2="318" y2="318" stroke={B(0.06)} strokeWidth="1" />
+        <line x1="318" y1="82"  x2="82"  y2="318" stroke={B(0.06)} strokeWidth="1" />
 
         {/* Cardinal tick marks */}
-        {[
-          [200, 22], [200, 378], [22, 200], [378, 200],
-        ].map(([cx, cy], i) => (
-          <circle
-            key={i}
-            cx={cx}
-            cy={cy}
-            r="2.5"
-            fill="rgba(147,197,253,0.35)"
-          />
+        {([[200, 22], [200, 378], [22, 200], [378, 200]] as [number,number][]).map(([cx, cy], i) => (
+          <circle key={i} cx={cx} cy={cy} r="2.5" fill={B(0.45)} />
         ))}
 
         {/* Center dot */}
-        <circle cx="200" cy="200" r="3" fill="rgba(147,197,253,0.70)" />
-        <circle cx="200" cy="200" r="7" stroke="rgba(147,197,253,0.20)" strokeWidth="1" fill="none" />
+        <circle cx="200" cy="200" r="3"  fill={B(0.80)} />
+        <circle cx="200" cy="200" r="7"  stroke={B(0.25)} strokeWidth="1" fill="none" />
 
         {/* Destination dots */}
         {DESTINATIONS.map(({ cx, cy, opacity }) => (
-          <circle
-            key={cx + "," + cy}
-            cx={cx}
-            cy={cy}
-            r="2"
-            fill={`rgba(147,197,253,${opacity * 0.9})`}
-          />
+          <circle key={cx + "," + cy} cx={cx} cy={cy} r="2" fill={B(opacity * 0.9)} />
         ))}
 
         {/* Destination connector lines */}
         {DESTINATIONS.map(({ cx, cy, opacity }) => (
           <line
             key={"l" + cx + "," + cy}
-            x1="200"
-            y1="200"
-            x2={cx}
-            y2={cy}
-            stroke={`rgba(147,197,253,${opacity * 0.25})`}
+            x1="200" y1="200" x2={cx} y2={cy}
+            stroke={B(opacity * 0.30)}
             strokeWidth="0.75"
             strokeDasharray="3 4"
           />
         ))}
       </svg>
 
-      {/* Destination labels — positioned over the SVG */}
+      {/* Destination labels */}
       {DESTINATIONS.map(({ label, cx, cy, opacity }) => (
         <span
           key={label}
           className="absolute text-[9px] uppercase tracking-[0.18em]"
           style={{
-            color: `rgba(147,197,253,${opacity})`,
-            /* shift slightly so label doesn't overlap the dot */
-            left: `${(cx / 400) * 100}%`,
-            top:  `${(cy / 400) * 100}%`,
+            color:     B(opacity),
+            left:      `${(cx / 400) * 100}%`,
+            top:       `${(cy / 400) * 100}%`,
             transform: cx > 200
               ? "translate(6px, -50%)"
               : "translate(calc(-100% - 6px), -50%)",

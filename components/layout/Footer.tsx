@@ -3,15 +3,15 @@ export default function Footer() {
     <footer
       className="border-t"
       style={{
-        background:   "#0D1822",
-        borderColor:  "rgba(255,255,255,0.06)",
+        background:  "#FFF0E8",
+        borderColor: "rgba(180,120,80,0.15)",
       }}
     >
       <div className="max-w-5xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-1.5">
-        <p className="text-[12px]" style={{ color: "#3D4E63" }}>
+        <p className="text-[12px]" style={{ color: "#9B7060" }}>
           © 2026 Artemis Axen
         </p>
-        <p className="text-[12px]" style={{ color: "#3D4E63" }}>
+        <p className="text-[12px]" style={{ color: "#9B7060" }}>
           Athens, Greece
         </p>
       </div>

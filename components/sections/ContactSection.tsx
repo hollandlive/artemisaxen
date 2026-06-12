@@ -1,6 +1,5 @@
-import SectionLabel from "@/components/ui/SectionLabel"
-import FadeIn       from "@/components/ui/FadeIn"
-import { CONTACT }  from "@/lib/metadata"
+import FadeIn      from "@/components/ui/FadeIn"
+import { CONTACT } from "@/lib/metadata"
 
 const LINKS: { channel: string; display: string; href: string; external?: boolean }[] = [
   {
@@ -28,28 +27,28 @@ export default function ContactSection() {
       id="contact"
       aria-label="Contact"
       style={{
-        background: "linear-gradient(160deg, #1A2E4A 0%, #0D1822 100%)",
+        background: "linear-gradient(160deg, #F5F0FF 0%, #FFF0E8 100%)",
       }}
     >
       <div className="max-w-5xl mx-auto px-6 py-24 lg:py-32">
 
         <FadeIn direction="none">
-          <SectionLabel className="mb-0 text-[#4A5568]">
+          <p className="text-[11px] font-medium uppercase tracking-[0.12em]" style={{ color: "#7B6B99" }}>
             Get in touch
-          </SectionLabel>
+          </p>
         </FadeIn>
 
         <FadeIn direction="up" delay={0.06}>
           <h2
             className="font-serif italic mt-6 leading-[1.0]"
-            style={{ fontSize: "var(--text-title)", color: "#EFF6FF" }}
+            style={{ fontSize: "var(--text-title)", color: "#2D1A2A" }}
           >
             Let&apos;s build something.
           </h2>
         </FadeIn>
 
         <FadeIn direction="up" delay={0.14}>
-          <p className="mt-5 text-[14px] leading-relaxed" style={{ color: "#4A5568" }}>
+          <p className="mt-5 text-[14px] leading-relaxed" style={{ color: "#7B6B99" }}>
             Available for new projects. Response within 24 hours.
           </p>
         </FadeIn>
@@ -60,7 +59,7 @@ export default function ContactSection() {
             <li
               key={channel}
               className="border-t first:border-t-0"
-              style={{ borderColor: "rgba(255,255,255,0.07)" }}
+              style={{ borderColor: "rgba(120,60,100,0.10)" }}
             >
               <FadeIn direction="up" delay={0.20 + i * 0.08}>
                 <a
@@ -75,7 +74,7 @@ export default function ContactSection() {
                   <span className="flex flex-col sm:flex-row sm:items-baseline sm:gap-5">
                     <span
                       className="text-[11px] font-medium uppercase tracking-[0.14em]"
-                      style={{ color: "#4A5568" }}
+                      style={{ color: "#7B6B99" }}
                     >
                       {channel}
                     </span>
@@ -83,7 +82,7 @@ export default function ContactSection() {
                       className="font-serif italic mt-1 sm:mt-0"
                       style={{
                         fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)",
-                        color:    "#EFF6FF",
+                        color:    "#2D1A2A",
                       }}
                     >
                       {display}
@@ -91,7 +90,7 @@ export default function ContactSection() {
                   </span>
                   <span
                     className="transition-transform duration-300 group-hover:translate-x-1"
-                    style={{ color: "#4A5568" }}
+                    style={{ color: "#7B6B99" }}
                     aria-hidden="true"
                   >
                     →

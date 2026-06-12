@@ -10,7 +10,7 @@ export default function SokoleScene() {
     <article
       className="relative overflow-hidden min-h-screen"
       style={{
-        background: "linear-gradient(135deg, #3D1A08 0%, #2A1209 100%)",
+        background: "linear-gradient(135deg, #FDF5EE 0%, #F8E8D5 100%)",
       }}
       aria-label={`Project: ${p.name}`}
     >
@@ -19,15 +19,18 @@ export default function SokoleScene() {
         {/* ── Text column ──────────────────────────────────────── */}
         <div className="lg:w-5/12 lg:shrink-0">
           <FadeIn direction="up" delay={0}>
-            <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-sokole-gold">
+            <p
+              className="text-[11px] font-medium uppercase tracking-[0.14em]"
+              style={{ color: "#C9A84C" }}
+            >
               01 / {p.category}
             </p>
           </FadeIn>
 
           <FadeIn direction="up" delay={0.08}>
             <h2
-              className="font-serif italic mt-4 leading-[0.95] text-sokole-cream"
-              style={{ fontSize: "var(--text-title)" }}
+              className="font-serif italic mt-4 leading-[0.95]"
+              style={{ fontSize: "var(--text-title)", color: "#2A1209" }}
             >
               {p.name}
             </h2>
@@ -35,8 +38,11 @@ export default function SokoleScene() {
 
           <FadeIn direction="up" delay={0.14}>
             <p
-              className="font-serif mt-5 leading-snug text-sokole-blush"
-              style={{ fontSize: "clamp(1.15rem, 2vw, 1.375rem)" }}
+              className="font-serif mt-5 leading-snug"
+              style={{
+                fontSize: "clamp(1.15rem, 2vw, 1.375rem)",
+                color:    "#8B4A2A",
+              }}
             >
               {p.tagline}
             </p>
@@ -45,7 +51,7 @@ export default function SokoleScene() {
           <FadeIn direction="up" delay={0.20}>
             <p
               className="mt-6 text-[14px] leading-[1.8]"
-              style={{ color: "rgba(212,184,150,0.65)" }}
+              style={{ color: "rgba(90,45,20,0.65)" }}
             >
               {p.what}
             </p>
@@ -60,7 +66,7 @@ export default function SokoleScene() {
                          transition-opacity hover:opacity-60"
               style={{
                 color:         "#C9A84C",
-                borderBottom:  "1px solid rgba(201,168,76,0.35)",
+                borderBottom:  "1px solid rgba(201,168,76,0.40)",
                 paddingBottom: "1px",
               }}
             >
@@ -89,22 +95,25 @@ function SokoleVisual() {
       <span
         className="absolute font-serif italic select-none pointer-events-none"
         style={{
-          fontSize:  "340px",
-          color:     "#C9A84C",
-          opacity:   0.055,
-          top:       "-48px",
-          right:     "-8px",
+          fontSize:   "340px",
+          color:      "#C9A84C",
+          opacity:    0.12,
+          top:        "-48px",
+          right:      "-8px",
           lineHeight: 1,
         }}
       >
         S
       </span>
 
-      {/* Pull quote — actual words from the project */}
+      {/* Pull quote */}
       <blockquote className="relative" cite={p.url}>
         <p
-          className="font-serif italic text-sokole-cream leading-[1.15]"
-          style={{ fontSize: "clamp(1.45rem, 2.8vw, 2.15rem)" }}
+          className="font-serif italic leading-[1.15]"
+          style={{
+            fontSize: "clamp(1.45rem, 2.8vw, 2.15rem)",
+            color:    "#2A1209",
+          }}
         >
           &ldquo;{p.quote}&rdquo;
         </p>
@@ -115,13 +124,13 @@ function SokoleVisual() {
         {PALETTE.map((hex) => (
           <div
             key={hex}
-            className="w-7 h-7 rounded-full shrink-0"
+            className="w-7 h-7 rounded-full shrink-0 shadow-sm"
             style={{ backgroundColor: hex }}
           />
         ))}
         <span
           className="text-[10px] uppercase tracking-[0.16em] ml-1"
-          style={{ color: "rgba(201,168,76,0.35)" }}
+          style={{ color: "rgba(139,74,42,0.40)" }}
         >
           Brand Palette
         </span>

@@ -18,7 +18,7 @@ export default function LiveCityScene() {
     <article
       className="relative overflow-hidden min-h-screen"
       style={{
-        background: "linear-gradient(135deg, #0E2240 0%, #0C111A 100%)",
+        background: "linear-gradient(135deg, #EEF2FF 0%, #E4ECFF 100%)",
       }}
       aria-label={`Project: ${p.name}`}
     >
@@ -27,7 +27,10 @@ export default function LiveCityScene() {
         {/* ── Text column (right on desktop) ───────────────────── */}
         <div className="lg:w-5/12 lg:shrink-0">
           <FadeIn direction="up" delay={0}>
-            <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-livecity-accent">
+            <p
+              className="text-[11px] font-medium uppercase tracking-[0.14em]"
+              style={{ color: "#3B5BDB" }}
+            >
               02 / {p.category}
             </p>
           </FadeIn>
@@ -35,7 +38,7 @@ export default function LiveCityScene() {
           <FadeIn direction="up" delay={0.08}>
             <h2
               className="font-serif italic mt-4 leading-[0.95]"
-              style={{ fontSize: "var(--text-title)", color: "#EFF9FF" }}
+              style={{ fontSize: "var(--text-title)", color: "#1A2D6B" }}
             >
               {p.name}
             </h2>
@@ -46,7 +49,7 @@ export default function LiveCityScene() {
               className="font-serif mt-5 leading-snug"
               style={{
                 fontSize: "clamp(1.15rem, 2vw, 1.375rem)",
-                color:    "rgba(239,249,255,0.55)",
+                color:    "rgba(26,45,107,0.65)",
               }}
             >
               {p.tagline}
@@ -56,7 +59,7 @@ export default function LiveCityScene() {
           <FadeIn direction="up" delay={0.20}>
             <p
               className="mt-6 text-[14px] leading-[1.8]"
-              style={{ color: "rgba(148,163,184,0.65)" }}
+              style={{ color: "rgba(51,75,147,0.65)" }}
             >
               {p.what}
             </p>
@@ -68,9 +71,10 @@ export default function LiveCityScene() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 mt-8 text-[13px] font-medium
-                         transition-opacity hover:opacity-60 text-livecity-accent"
+                         transition-opacity hover:opacity-60"
               style={{
-                borderBottom:  "1px solid rgba(0,212,255,0.35)",
+                color:         "#3B5BDB",
+                borderBottom:  "1px solid rgba(59,91,219,0.35)",
                 paddingBottom: "1px",
               }}
             >
@@ -100,7 +104,7 @@ function LiveCityVisual() {
         <LivePulse />
         <span
           className="text-[10px] uppercase tracking-[0.14em]"
-          style={{ color: "rgba(0,212,255,0.30)" }}
+          style={{ color: "rgba(26,45,107,0.40)" }}
         >
           12 languages · live now
         </span>
@@ -113,27 +117,25 @@ function LiveCityVisual() {
             key={name}
             className="p-4"
             style={{
-              border:          "1px solid rgba(0,212,255,0.12)",
-              backgroundColor: "rgba(0,212,255,0.03)",
+              border:          "1px solid rgba(59,91,219,0.15)",
+              backgroundColor: "rgba(59,91,219,0.04)",
             }}
           >
             <div className="flex items-center gap-1.5 mb-2.5">
               <span className="w-1.5 h-1.5 rounded-full bg-livecity-live shrink-0" />
-              <span
-                className="text-[9px] font-medium uppercase tracking-[0.12em] text-livecity-live"
-              >
+              <span className="text-[9px] font-medium uppercase tracking-[0.12em] text-livecity-live">
                 Live
               </span>
             </div>
             <p
               className="text-[13px] font-medium leading-tight"
-              style={{ color: "rgba(0,212,255,0.85)" }}
+              style={{ color: "rgba(26,45,107,0.85)" }}
             >
               {name}
             </p>
             <p
               className="text-[10px] mt-1 tracking-[0.08em]"
-              style={{ color: "rgba(0,212,255,0.28)" }}
+              style={{ color: "rgba(26,45,107,0.30)" }}
             >
               {code}
             </p>

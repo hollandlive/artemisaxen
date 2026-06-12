@@ -1,5 +1,6 @@
 import FadeIn       from "@/components/ui/FadeIn"
 import SectionLabel from "@/components/ui/SectionLabel"
+import SectionArrow from "@/components/ui/SectionArrow"
 
 const THOUGHTS = [
   {
@@ -26,7 +27,7 @@ const THOUGHTS = [
 
 export default function InsightsSection() {
   return (
-    <section id="thoughts" aria-label="Thoughts" className="bg-canvas">
+    <section id="thoughts" aria-label="Thoughts" className="relative bg-canvas">
       <div className="max-w-5xl mx-auto px-6 py-24 lg:py-32">
 
         <FadeIn direction="none">
@@ -75,6 +76,11 @@ export default function InsightsSection() {
         </div>
 
       </div>
+
+      <SectionArrow
+        targetId="sokole"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+      />
     </section>
   )
 }

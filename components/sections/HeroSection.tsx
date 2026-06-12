@@ -140,7 +140,7 @@ function HeroAnimated() {
   )
 
   const handleScrollToWork = () => {
-    document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("thoughts")?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
@@ -227,7 +227,7 @@ function HeroAnimated() {
           className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10
                      cursor-pointer appearance-none bg-transparent border-0 p-2 -m-2"
           style={{ opacity: indicatorOpacity }}
-          aria-label="Scroll to work section"
+          aria-label="Scroll to next section"
         >
           <ScrollIndicator />
         </m.button>

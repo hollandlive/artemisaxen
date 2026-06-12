@@ -12,11 +12,13 @@ const links = [
 ]
 
 /* ─── Threshold: navbar switches from dark to light mode.
-   The hero dark overlay fades between ~55–80% of its 250vh
-   scroll range. At 1.4× viewport height the background is
-   transitioning to warm white — safe to show the light nav.
-   Refined in Phase B once the hero is live. ─────────────────── */
-const DARK_THRESHOLD_VH = 1.4
+   Hero overlay fades between scrollYProgress 0.55–0.80 of a
+   250vh container. At 0.80 the overlay is fully gone:
+     scrollY = 0.80 × 250vh = 200vh = 2.0 × viewportHeight
+   We switch slightly before full completion (1.8×) so the
+   backdrop nav appears as the warm canvas is settling.
+─────────────────────────────────────────────────────────────── */
+const DARK_THRESHOLD_VH = 1.8
 
 export default function Navbar() {
   const [scrolled,    setScrolled]    = useState(false)

@@ -52,6 +52,12 @@ body {
   color: #F7F5F0;
 }
 
+:focus-visible {
+  outline: 2px solid #1C1B19;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 /* Fluid type scale — consumed via inline styles or arbitrary values */
 :root {
   --text-display: clamp(3.25rem, 8vw, 7rem);

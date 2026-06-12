@@ -3,6 +3,36 @@
 import { useRef } from "react"
 import { m, useScroll, useTransform, useReducedMotion } from "framer-motion"
 
+const YT_ID = "mkgiWK2GoOg"
+
+/* ─── YouTube background ─────────────────────────────────────────
+   Covers the sticky viewport regardless of aspect ratio.
+   pointerEvents none so scroll still works through it.
+───────────────────────────────────────────────────────────────── */
+function YouTubeBackground() {
+  return (
+    <div className="absolute inset-0 overflow-hidden bg-ink" aria-hidden="true">
+      <iframe
+        src={`https://www.youtube-nocookie.com/embed/${YT_ID}?autoplay=1&mute=1&loop=1&playlist=${YT_ID}&controls=0&disablekb=1&fs=0&iv_load_policy=3&rel=0&modestbranding=1&playsinline=1`}
+        style={{
+          position:   "absolute",
+          top:        "50%",
+          left:       "50%",
+          width:      "177.78vh",  /* 16:9 at full height */
+          minWidth:   "100%",
+          height:     "100vh",
+          minHeight:  "56.25vw",   /* 16:9 at full width */
+          transform:  "translate(-50%, -50%)",
+          border:     "none",
+          pointerEvents: "none",
+        }}
+        allow="autoplay; encrypted-media"
+        title="Background video"
+      />
+    </div>
+  )
+}
+
 /* ─── Reduced-motion variant ─────────────────────────────────────
    All copy visible immediately, warm white background, no animation.
 ───────────────────────────────────────────────────────────────── */
@@ -43,126 +73,75 @@ function HeroStatic() {
 }
 
 /* ─── Scroll indicator ───────────────────────────────────────────
-   Static SVG — opacity is controlled by parent scroll-driven m.div.
-   No internal animation keeps it premium and avoids stacking issues.
+   Rendered inside a button — scrolls to #work on click.
 ───────────────────────────────────────────────────────────────── */
 function ScrollIndicator() {
   return (
-    <svg
-      width="18"
-      height="26"
-      viewBox="0 0 18 26"
-      fill="none"
-      aria-hidden="true"
-    >
+    <svg width="18" height="26" viewBox="0 0 18 26" fill="none" aria-hidden="true">
       <line
         x1="9" y1="2" x2="9" y2="20"
-        stroke="white"
-        strokeWidth="1"
-        strokeLinecap="round"
-        strokeOpacity="0.35"
+        stroke="white" strokeWidth="1" strokeLinecap="round" strokeOpacity="0.45"
       />
       <path
         d="M3 14l6 7 6-7"
-        stroke="white"
-        strokeWidth="1"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeOpacity="0.35"
+        stroke="white" strokeWidth="1"
+        strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.45"
       />
     </svg>
   )
 }
 
 /* ─── Animated hero ──────────────────────────────────────────────
-   Separated from the default export so useReducedMotion() can bail
-   early without calling the scroll hooks unnecessarily.
+   250vh outer container · 100dvh sticky shell.
+   YouTube video visible at 35% through the dark overlay.
 ───────────────────────────────────────────────────────────────── */
 function HeroAnimated() {
   const containerRef = useRef<HTMLDivElement>(null)
 
-  /* scrollYProgress: 0 → 1 as the 250vh container scrolls past */
   const { scrollYProgress } = useScroll({
     target:  containerRef,
     offset:  ["start start", "end start"],
   })
 
-  /* ── Dark overlay ────────────────────────────────────────────
-     GPU-composited opacity fade. The warm white canvas (#F7F5F0)
-     sits underneath — it's always there, the overlay just hides it.
-     Fades out between 55–80% scroll progress.
-  ─────────────────────────────────────────────────────────────── */
+  /* Overlay: starts at 0.65 so video is visible, fades out at 55–80% */
   const overlayOpacity = useTransform(
     scrollYProgress,
     [0.55, 0.80],
-    [1, 0],
+    [0.65, 0],
   )
 
-  /* ── Scroll indicator ────────────────────────────────────────
-     Disappears before the first headline fades in on scroll.
-  ─────────────────────────────────────────────────────────────── */
   const indicatorOpacity = useTransform(
     scrollYProgress,
     [0, 0.04, 0.10],
     [1, 1, 0],
   )
 
-  /* ── Line 1: "Design is the argument." ──────────────────────
-     Enters at the first scroll touch, holds, then dissolves
-     just before Line 2 arrives — a gentle cross-fade.
-  ─────────────────────────────────────────────────────────────── */
   const line1Opacity = useTransform(
     scrollYProgress,
     [0, 0.08, 0.22, 0.30],
     [0, 1,    1,    0],
   )
-  const line1Y = useTransform(
-    scrollYProgress,
-    [0, 0.08],
-    [28, 0],
-  )
+  const line1Y = useTransform(scrollYProgress, [0, 0.08], [28, 0])
 
-  /* ── Line 2: "Development is the proof." ────────────────────
-     Fades in while Line 1 is still dissolving (0.26–0.30 window
-     of cross-dissolve is intentional and cinematic).
-  ─────────────────────────────────────────────────────────────── */
   const line2Opacity = useTransform(
     scrollYProgress,
     [0.26, 0.34, 0.48, 0.56],
     [0,    1,    1,    0],
   )
-  const line2Y = useTransform(
-    scrollYProgress,
-    [0.26, 0.34],
-    [28, 0],
-  )
+  const line2Y = useTransform(scrollYProgress, [0.26, 0.34], [28, 0])
 
-  /* ── Name: "— Artemis Axen · Athens" ────────────────────────
-     The final reveal. Does not exit — it holds as the dark overlay
-     fades and the warm white canvas settles beneath it. The name
-     transitions from white (on dark) to charcoal (on warm white)
-     as a natural result of the overlay disappearing.
-  ─────────────────────────────────────────────────────────────── */
-  const nameOpacity = useTransform(
-    scrollYProgress,
-    [0.52, 0.64],
-    [0, 1],
-  )
-  const nameY = useTransform(
-    scrollYProgress,
-    [0.52, 0.64],
-    [18, 0],
-  )
+  const nameOpacity = useTransform(scrollYProgress, [0.52, 0.64], [0, 1])
+  const nameY       = useTransform(scrollYProgress, [0.52, 0.64], [18, 0])
 
-  /* ── Name text color: white on dark → charcoal on warm white ─
-     Interpolates alongside the overlay fade so the text is always
-     readable against whatever background is beneath it.
-  ─────────────────────────────────────────────────────────────── */
   const nameColor = useTransform(
     scrollYProgress,
     [0.55, 0.85],
-    ["rgba(250,250,248,0.60)", "rgba(107,105,99,0.90)"],
+    ["rgba(250,250,248,0.65)", "rgba(107,105,99,0.90)"],
   )
+
+  const handleScrollToWork = () => {
+    document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })
+  }
 
   return (
     <section
@@ -170,7 +149,6 @@ function HeroAnimated() {
       className="relative h-[250vh]"
       aria-label="Hero"
     >
-      {/* Accessible h1 — never visible, always readable by screen readers */}
       <h1 className="sr-only">
         Artemis Axen — Web Design &amp; Development, Athens
       </h1>
@@ -178,7 +156,10 @@ function HeroAnimated() {
       {/* ── Sticky viewport shell ─────────────────────────────── */}
       <div className="sticky top-0 h-[100dvh] bg-canvas overflow-hidden">
 
-        {/* Dark overlay — sits above canvas, fades via scroll-linked opacity */}
+        {/* Cinematic video background */}
+        <YouTubeBackground />
+
+        {/* Dark overlay — fades as canvas settles */}
         <m.div
           className="absolute inset-0 bg-ink z-0"
           style={{ opacity: overlayOpacity }}
@@ -240,14 +221,16 @@ function HeroAnimated() {
           </m.div>
         </div>
 
-        {/* ── Scroll indicator ────────────────────────────────── */}
-        <m.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        {/* ── Scroll indicator (clickable) ────────────────────── */}
+        <m.button
+          onClick={handleScrollToWork}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10
+                     cursor-pointer appearance-none bg-transparent border-0 p-2 -m-2"
           style={{ opacity: indicatorOpacity }}
-          aria-hidden="true"
+          aria-label="Scroll to work section"
         >
           <ScrollIndicator />
-        </m.div>
+        </m.button>
 
       </div>
     </section>

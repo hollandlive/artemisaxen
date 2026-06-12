@@ -27,27 +27,29 @@ export default function ContactSection() {
     <section
       id="contact"
       aria-label="Contact"
-      className="bg-ink"
+      style={{
+        background: "linear-gradient(160deg, #1A2E4A 0%, #0D1822 100%)",
+      }}
     >
       <div className="max-w-5xl mx-auto px-6 py-24 lg:py-32">
 
         <FadeIn direction="none">
-          <SectionLabel light className="text-[#4A4845]">
+          <SectionLabel className="mb-0 text-[#4A5568]">
             Get in touch
           </SectionLabel>
         </FadeIn>
 
         <FadeIn direction="up" delay={0.06}>
           <h2
-            className="font-serif italic text-surface mt-6 leading-[1.0]"
-            style={{ fontSize: "var(--text-title)" }}
+            className="font-serif italic mt-6 leading-[1.0]"
+            style={{ fontSize: "var(--text-title)", color: "#EFF6FF" }}
           >
             Let&apos;s build something.
           </h2>
         </FadeIn>
 
         <FadeIn direction="up" delay={0.14}>
-          <p className="mt-5 text-[14px] leading-relaxed" style={{ color: "#6B6963" }}>
+          <p className="mt-5 text-[14px] leading-relaxed" style={{ color: "#4A5568" }}>
             Available for new projects. Response within 24 hours.
           </p>
         </FadeIn>
@@ -57,7 +59,8 @@ export default function ContactSection() {
           {LINKS.map(({ channel, display, href, external }, i) => (
             <li
               key={channel}
-              className="border-t border-border-dark first:border-t-0"
+              className="border-t first:border-t-0"
+              style={{ borderColor: "rgba(255,255,255,0.07)" }}
             >
               <FadeIn direction="up" delay={0.20 + i * 0.08}>
                 <a
@@ -72,20 +75,23 @@ export default function ContactSection() {
                   <span className="flex flex-col sm:flex-row sm:items-baseline sm:gap-5">
                     <span
                       className="text-[11px] font-medium uppercase tracking-[0.14em]"
-                      style={{ color: "#4A4845" }}
+                      style={{ color: "#4A5568" }}
                     >
                       {channel}
                     </span>
                     <span
-                      className="font-serif italic text-surface mt-1 sm:mt-0"
-                      style={{ fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)" }}
+                      className="font-serif italic mt-1 sm:mt-0"
+                      style={{
+                        fontSize: "clamp(1.25rem, 2.5vw, 1.75rem)",
+                        color:    "#EFF6FF",
+                      }}
                     >
                       {display}
                     </span>
                   </span>
                   <span
-                    className="text-[#4A4845] transition-transform duration-300
-                               group-hover:translate-x-1"
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                    style={{ color: "#4A5568" }}
                     aria-hidden="true"
                   >
                     →

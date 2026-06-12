@@ -7,7 +7,7 @@ export default function AboutSection() {
     <section
       id="about"
       aria-label="About"
-      className="bg-canvas"
+      style={{ background: "linear-gradient(to bottom, #F7F5F0 0%, #F1EBE3 100%)" }}
     >
       <div className="max-w-5xl mx-auto px-6 py-24 lg:py-32">
 

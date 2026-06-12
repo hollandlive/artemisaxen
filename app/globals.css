@@ -1,18 +1,38 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Neutral palette: white · warm gray · charcoal */
-  --color-canvas:  #FAFAF8;
-  --color-surface: #FFFFFF;
-  --color-border:  #E5E3DE;
-  --color-muted:   #9C9A95;
-  --color-dim:     #6B6963;
-  --color-body:    #3D3B38;
-  --color-ink:     #1C1B19;
+  /* ── PORTFOLIO PALETTE ───────────────────────────────────── */
+  --color-canvas:       #F7F5F0;  /* warm white · main background  */
+  --color-surface:      #FFFFFF;  /* pure white · nav, cards       */
+  --color-ink:          #141412;  /* near black · hero, contact bg */
+  --color-charcoal:     #1C1B19;  /* primary text                  */
+  --color-body:         #3D3B38;  /* secondary text                */
+  --color-dim:          #6B6963;  /* tertiary text                 */
+  --color-muted:        #9C9A95;  /* metadata, placeholders        */
+  --color-border:       #E5E3DE;  /* dividers, card edges          */
+  --color-border-dark:  #252422;  /* dividers on dark backgrounds  */
 
-  /* Fonts */
+  /* ── SOKOLE ─────────────────────────────────────────────── */
+  --color-sokole-bg:    #2A1209;
+  --color-sokole-deep:  #1A0D08;
+  --color-sokole-gold:  #C9A84C;
+  --color-sokole-cream: #F5EFE6;
+  --color-sokole-blush: #EDD5CA;
+  --color-sokole-sand:  #D4B896;
+
+  /* ── LIVECITY ────────────────────────────────────────────── */
+  --color-livecity-bg:     #0C111A;
+  --color-livecity-accent: #00D4FF;
+  --color-livecity-live:   #EF4444;
+
+  /* ── TRAVELHUB ───────────────────────────────────────────── */
+  --color-travelhub-from:  #1B3A5C;
+  --color-travelhub-to:    #0F1923;
+  --color-travelhub-light: #93C5FD;
+
+  /* ── TYPOGRAPHY ─────────────────────────────────────────── */
   --font-sans:  var(--font-inter), system-ui, sans-serif;
-  --font-serif: var(--font-instrument-serif), Georgia, serif;
+  --font-serif: var(--font-fraunces), Georgia, serif;
 }
 
 html {
@@ -20,8 +40,21 @@ html {
 }
 
 body {
-  background-color: #FAFAF8;
+  background-color: #F7F5F0;
   color: #3D3B38;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #1C1B19;
+  color: #F7F5F0;
+}
+
+/* Fluid type scale — consumed via inline styles or arbitrary values */
+:root {
+  --text-display: clamp(3.25rem, 8vw, 7rem);
+  --text-title:   clamp(2.25rem, 5vw, 3.5rem);
+  --text-lead:    clamp(1.125rem, 2vw, 1.375rem);
 }

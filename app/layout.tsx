@@ -1,44 +1,74 @@
-import type { Metadata } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from "next"
+import { Inter, Fraunces } from "next/font/google"
+import MotionProvider from "@/components/layout/MotionProvider"
+import { META, SITE_URL, STRUCTURED_DATA } from "@/lib/metadata"
+import "./globals.css"
+
+/* ── Fonts ────────────────────────────────────────────────────── */
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets:  ["latin"],
+  axes:     ["opsz"],
+  weight:   "variable",
+  style:    ["normal", "italic"],
+  display:  "swap",
+  preload:  true,
+})
 
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
+  subsets:  ["latin"],
+  weight:   ["400", "500"],
+  display:  "swap",
+  preload:  false,
+})
 
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-});
-
+/* ── Metadata ─────────────────────────────────────────────────── */
 export const metadata: Metadata = {
-  title: "Artem Axen — Web Design & Development",
-  description:
-    "Web design and development for small businesses, Shopify stores, and local brands. Based in Athens, Greece.",
-  openGraph: {
-    title: "Artem Axen — Web Design & Development",
-    description:
-      "Web design and development for small businesses, Shopify stores, and local brands. Based in Athens, Greece.",
-    url: "https://artemaxen.com",
-    siteName: "Artem Axen",
-    locale: "en_US",
-    type: "website",
+  metadataBase: new URL(SITE_URL),
+  title:        META.title,
+  description:  META.description,
+  robots: {
+    index:  true,
+    follow: true,
   },
-};
+  openGraph: {
+    title:     META.ogTitle,
+    description: META.description,
+    url:       SITE_URL,
+    siteName:  "Artemis Axen",
+    locale:    "en_US",
+    type:      "website",
+  },
+  twitter: {
+    card:        META.twitterCard,
+    title:       META.ogTitle,
+    description: META.description,
+  },
+}
 
+/* ── Root layout ──────────────────────────────────────────────── */
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${instrumentSerif.variable} antialiased`}
+      className={`${fraunces.variable} ${inter.variable}`}
     >
-      <body className="min-h-screen font-sans">{children}</body>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(STRUCTURED_DATA),
+          }}
+        />
+      </head>
+      <body className="font-sans antialiased">
+        <MotionProvider>
+          {children}
+        </MotionProvider>
+      </body>
     </html>
-  );
+  )
 }

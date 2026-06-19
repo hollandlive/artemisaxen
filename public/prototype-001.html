@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prototype 001</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:   #F4F1EC;
+  --ink:     #28251F;
+  --soft:    #6B6560;
+  --faint:   #B8B3AD;
+  --rule:    #DED9D2;
+  --accent:  #8B6347;
+  --accent2: #C49A7A;
+}
+
+html, body {
+  min-height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── WORDMARK ─────────────────────────────────────────────── */
+
+.wordmark {
+  position: fixed;
+  top: 28px;
+  left: 40px;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--faint);
+  z-index: 20;
+  user-select: none;
+}
+
+/* ─── PAGE SHELL ─────────────────────────────────────────────── */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 40px 80px;
+}
+
+/* ─── STAGE SYSTEM ───────────────────────────────────────────── */
+
+.stage {
+  width: 100%;
+  max-width: 540px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.65s ease;
+  position: absolute;
+}
+.stage.active {
+  opacity: 1;
+  pointer-events: all;
+  position: relative;
+}
+
+/* ─── STAGE 1: QUESTION ──────────────────────────────────────── */
+
+#s1 { text-align: left; }
+
+.q-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 5.5vw, 46px);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.88em;
+  background: var(--accent);
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  animation: blink 1.1s step-end infinite;
+}
+.cursor.gone { display: none; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ─── STAGE 2: CHOICES ───────────────────────────────────────── */
+
+.choices-intro {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 32px;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.2s;
+}
+.choices-intro.show { opacity: 1; }
+
+.choice {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  border-top: 1px solid var(--rule);
+  padding: 20px 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(19px, 3vw, 24px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--soft);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.45s ease, transform 0.45s ease, color 0.2s ease, padding-left 0.2s ease;
+}
+.choice:last-of-type { border-bottom: 1px solid var(--rule); }
+.choice.in { opacity: 1; transform: none; }
+.choice:hover { color: var(--ink); padding-left: 14px; }
+
+/* ─── STAGE 3: LETTER ────────────────────────────────────────── */
+
+.l-eyebrow {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+}
+
+.l-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 300;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.l-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 3.5vw, 28px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--soft);
+  margin-bottom: 36px;
+}
+
+.l-rule {
+  width: 32px;
+  height: 1px;
+  background: var(--accent2);
+  margin-bottom: 32px;
+}
+
+.l-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(16px, 2.4vw, 19px);
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--soft);
+  margin-bottom: 18px;
+}
+
+.l-spacer { height: 40px; }
+
+/* ─── VIDEO STILL ─────────────────────────────────────────────── */
+
+.video-still {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--ink);
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.video-still img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.82;
+  transition: opacity 0.3s ease;
+  display: block;
+}
+.video-still:hover img { opacity: 0.65; }
+
+.play-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(244,241,236,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.video-still:hover .play-ring {
+  border-color: rgba(244,241,236,1);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+.play-ring svg { margin-left: 3px; }
+
+.still-caption {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--soft);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+.still-meta {
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 48px;
+  background: none;
+  border: none;
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--faint);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+}
+.back-btn:hover { color: var(--soft); }
+
+/* ─── FULLSCREEN PLAYER ──────────────────────────────────────── */
+
+.player-shell {
+  position: fixed;
+  inset: 0;
+  background: #1A1815;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+.player-shell.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.player-video {
+  width: 100%;
+  max-width: 1080px;
+  aspect-ratio: 16/9;
+}
+.player-video iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.player-bar {
+  width: 100%;
+  max-width: 1080px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 22px;
+  gap: 32px;
+}
+.player-editorial {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.65;
+  color: rgba(244,241,236,0.45);
+  flex: 1;
+}
+.player-close {
+  background: none;
+  border: 1px solid rgba(244,241,236,0.18);
+  color: rgba(244,241,236,0.45);
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 9px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.player-close:hover {
+  border-color: rgba(244,241,236,0.5);
+  color: rgba(244,241,236,0.85);
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .wordmark { left: 24px; top: 20px; }
+  .page { padding: 100px 24px 60px; }
+  .player-bar { flex-direction: column; }
+  .player-close { align-self: flex-end; }
+  .player-shell { padding: 24px 20px; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="wordmark">TravelHubCam</div>
+
+<div class="page">
+
+  <!-- STAGE 1: QUESTION -->
+  <div class="stage active" id="s1">
+    <p class="q-text" id="q-text"></p>
+  </div>
+
+  <!-- STAGE 2: CHOICES -->
+  <div class="stage" id="s2">
+    <p class="choices-intro" id="ci">Choose the one that is closest.</p>
+    <div id="choice-list">
+      <button class="choice" data-need="rest">I need everything to slow down for a little while.</button>
+      <button class="choice" data-need="escape">I need to be somewhere completely different from here.</button>
+      <button class="choice" data-need="focus">I need the kind of quiet that actually feels like quiet.</button>
+      <button class="choice" data-need="wander">I need to follow something without knowing where it ends.</button>
+    </div>
+  </div>
+
+  <!-- STAGE 3: LETTER -->
+  <div class="stage" id="s3"></div>
+
+</div>
+
+<!-- PLAYER -->
+<div class="player-shell" id="player">
+  <div class="player-video">
+    <iframe id="yt" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
+  <div class="player-bar">
+    <p class="player-editorial" id="pe"></p>
+    <button class="player-close" onclick="closePlayer()">← Return</button>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+/* ── DATA ─────────────────────────────────────────────────── */
+
+const D = {
+  rest: {
+    eyebrow:   'Collection 001 — Rainy Morning',
+    title:     'Edinburgh in Rain',
+    subtitle:  'A Morning Walk Through the Old Town',
+    body: [
+      'Shot on a Tuesday morning in November. The rain started at 4:40 and never stopped. The streets were empty — except for pigeons, and a man with a green umbrella who appeared at the top of the Royal Mile and walked the same route twice. No one knows why.',
+      'Forty-one minutes. No narration. No music. The sound of rain on stone.'
+    ],
+    caption:   'The world when it is not yet claimed by the day.',
+    city:      'Edinburgh, Scotland',
+    dur:       '41 min',
+    channel:   'The Silent Walker',
+    id:        'd-xyqp5rgWE',
+    note:      'The rain started at 4:40 and never stopped. A man with a green umbrella appeared twice. No one knows why.'
+  },
+  escape: {
+    eyebrow:   'Collection 003 — Edge of the Atlantic',
+    title:     'The Azores in February',
+    subtitle:  'A Morning at the Edge of the World',
+    body: [
+      'Filmed on São Miguel at 6am. The photographer drove forty minutes on empty roads to reach this bay. At the twelve-minute mark, for approximately thirty seconds, the only sound is water on black volcanic stone.',
+      'We recommend headphones. We recommend not knowing what time it is.'
+    ],
+    caption:   'When the edge of the world is this quiet, you remember how small you are — and how that is a relief.',
+    city:      'São Miguel, Azores',
+    dur:       '38 min',
+    channel:   'World Wanderings',
+    id:        'pw6G8wssRSA',
+    note:      'At the twelve-minute mark, for approximately thirty seconds, the only sound is water on black volcanic stone.'
+  },
+  focus: {
+    eyebrow:   'Collection 005 — Moving Through Quiet',
+    title:     'Spiez in Autumn Rain',
+    subtitle:  'A Morning by the Lake',
+    body: [
+      'The Bernese Oberland in October. The town is small enough to know everyone and large enough that no one notices you. The rain comes and goes. Lake Thun disappears into the cloud and returns.',
+      'After about twelve minutes, the rhythm of the walk becomes something you stop thinking about. That is when it begins to work.'
+    ],
+    caption:   'Motion that stays still.',
+    city:      'Spiez, Switzerland',
+    dur:       '44 min',
+    channel:   'Nomadic Ambience',
+    id:        'cSViPEgXfZA',
+    note:      'After about twelve minutes, the rhythm of the walk becomes something you stop thinking about. That is when it begins to work.'
+  },
+  wander: {
+    eyebrow:   'Collection 001 — Rainy Morning',
+    title:     'Kyoto in Light Rain',
+    subtitle:  'The Historic Streets of Higashiyama',
+    body: [
+      'Higashiyama at 7am in March, the day after the first rain in two weeks. The stone turns dark. The air smells of wet cedar and stone. The tourists have not yet emerged from their hotels.',
+      'The photographer walked for forty-nine minutes without stopping. We do not know if they had anywhere to be.'
+    ],
+    caption:   'Stone streets, wet cedar, the city before the day claims it.',
+    city:      'Kyoto, Japan',
+    dur:       '49 min',
+    channel:   'Virtual Japan',
+    id:        'KDEmWy30Vn0',
+    note:      'The stone turns dark. The air smells of wet cedar. The tourists have not yet emerged from their hotels.'
+  }
+};
+
+/* ── STATE ────────────────────────────────────────────────── */
+
+let activeNeed = null;
+
+/* ── ELEMENTS ─────────────────────────────────────────────── */
+
+const s1 = document.getElementById('s1');
+const s2 = document.getElementById('s2');
+const s3 = document.getElementById('s3');
+const qEl = document.getElementById('q-text');
+const ci  = document.getElementById('ci');
+const playerShell = document.getElementById('player');
+const ytEl  = document.getElementById('yt');
+const peEl  = document.getElementById('pe');
+
+/* ── STAGE ────────────────────────────────────────────────── */
+
+function go(stage) {
+  [s1, s2, s3].forEach(s => s.classList.remove('active'));
+  stage.classList.add('active');
+}
+
+/* ── TYPING ───────────────────────────────────────────────── */
+
+function type(el, text, speed, done) {
+  const cur = document.createElement('span');
+  cur.className = 'cursor';
+  el.appendChild(cur);
+  let i = 0;
+  const t = setInterval(() => {
+    if (i >= text.length) {
+      clearInterval(t);
+      setTimeout(() => { cur.classList.add('gone'); done && done(); }, 500);
+      return;
+    }
+    el.insertBefore(document.createTextNode(text[i++]), cur);
+  }, speed);
+}
+
+/* ── INIT ─────────────────────────────────────────────────── */
+
+setTimeout(() => {
+  type(qEl, 'What do you need right now?', 36, () => {
+    setTimeout(showChoices, 700);
+  });
+}, 350);
+
+/* ── CHOICES ──────────────────────────────────────────────── */
+
+function showChoices() {
+  go(s2);
+  setTimeout(() => {
+    ci.classList.add('show');
+    document.querySelectorAll('.choice').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), 180 + i * 110);
+    });
+  }, 80);
+}
+
+document.querySelectorAll('.choice').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeNeed = btn.dataset.need;
+    buildLetter(activeNeed);
+  });
+});
+
+/* ── LETTER ───────────────────────────────────────────────── */
+
+function buildLetter(need) {
+  const d = D[need];
+  const thumb = `https://img.youtube.com/vi/${d.id}/maxresdefault.jpg`;
+
+  s3.innerHTML = `
+    <p class="l-eyebrow">${d.eyebrow}</p>
+    <h1 class="l-title">${d.title}</h1>
+    <p class="l-subtitle">${d.subtitle}</p>
+    <div class="l-rule"></div>
+    ${d.body.map(p => `<p class="l-body">${p}</p>`).join('')}
+    <div class="l-spacer"></div>
+    <div class="video-still" onclick="openPlayer('${need}')">
+      <img src="${thumb}" alt="${d.title}" loading="lazy">
+      <div class="play-ring">
+        <svg width="13" height="15" viewBox="0 0 13 15" fill="none">
+          <path d="M1 1.5L12 7.5L1 13.5V1.5Z" fill="rgba(244,241,236,0.9)" stroke="rgba(244,241,236,0.5)" stroke-width="0.5"/>
+        </svg>
+      </div>
+    </div>
+    <p class="still-caption">${d.caption}</p>
+    <p class="still-meta">${d.city}&ensp;&middot;&ensp;${d.dur}&ensp;&middot;&ensp;${d.channel}</p>
+    <button class="back-btn" onclick="showChoices()">Choose differently</button>
+  `;
+
+  setTimeout(() => go(s3), 60);
+}
+
+/* ── PLAYER ───────────────────────────────────────────────── */
+
+function openPlayer(need) {
+  const d = D[need];
+  ytEl.src = `https://www.youtube.com/embed/${d.id}?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&color=white`;
+  peEl.textContent = d.note;
+  playerShell.classList.add('open');
+}
+
+function closePlayer() {
+  playerShell.classList.remove('open');
+  ytEl.src = '';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closePlayer();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Travel Emotion Lens</title>
+
+<style>
+html,body{
+    margin:0;
+    height:100%;
+    overflow:hidden;
+    background:#08090d;
+    font-family:Inter,sans-serif;
+    color:white;
+}
+
+canvas{
+    position:absolute;
+    inset:0;
+}
+
+#cursor{
+    position:absolute;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    border:2px solid rgba(255,255,255,.5);
+    backdrop-filter:blur(14px);
+    overflow:hidden;
+    transition:width .2s,height .2s;
+}
+
+.layer{
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    font-size:70px;
+    font-weight:700;
+    letter-spacing:-2px;
+    transition:opacity .6s;
+}
+
+.layer:nth-child(1){
+    background:
+    radial-gradient(circle at 30% 40%,#5b8cff,transparent 35%),
+    radial-gradient(circle at 70% 70%,#00d4aa,transparent 35%),
+    #10141d;
+}
+
+.layer:nth-child(2){
+    background:
+    radial-gradient(circle at 60% 30%,#ff8d6d,transparent 35%),
+    radial-gradient(circle at 30% 80%,#ffd36a,transparent 35%),
+    #1b120f;
+    opacity:0;
+}
+
+.layer:nth-child(3){
+    background:
+    radial-gradient(circle at 40% 50%,#d58bff,transparent 35%),
+    radial-gradient(circle at 80% 20%,#84f3ff,transparent 35%),
+    #0d1017;
+    opacity:0;
+}
+
+#hint{
+    position:absolute;
+    top:40px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:18px;
+    opacity:.75;
+}
+
+#label{
+    position:absolute;
+    bottom:50px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:26px;
+    font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<div id="hint">
+Move your cursor slowly. Your speed changes the world.
+</div>
+
+<div class="layer" id="peace">
+Silence
+</div>
+
+<div class="layer" id="energy">
+Energy
+</div>
+
+<div class="layer" id="wonder">
+Wonder
+</div>
+
+<div id="cursor"></div>
+
+<div id="label">
+Travel isn't chosen by destination.<br>
+It's revealed by how you move.
+</div>
+
+<script>
+const cursor=document.getElementById("cursor");
+
+const peace=document.getElementById("peace");
+const energy=document.getElementById("energy");
+const wonder=document.getElementById("wonder");
+
+let lastX=0,lastY=0,lastTime=performance.now();
+
+window.addEventListener("mousemove",e=>{
+
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+
+const now=performance.now();
+
+const dx=e.clientX-lastX;
+const dy=e.clientY-lastY;
+
+const speed=Math.sqrt(dx*dx+dy*dy)/(now-lastTime);
+
+lastX=e.clientX;
+lastY=e.clientY;
+lastTime=now;
+
+if(speed<0.25){
+
+peace.style.opacity=1;
+energy.style.opacity=0;
+wonder.style.opacity=0;
+
+cursor.style.width="300px";
+cursor.style.height="300px";
+
+}
+
+else if(speed<0.8){
+
+peace.style.opacity=0;
+energy.style.opacity=1;
+wonder.style.opacity=0;
+
+cursor.style.width="220px";
+cursor.style.height="220px";
+
+}
+
+else{
+
+peace.style.opacity=0;
+energy.style.opacity=0;
+wonder.style.opacity=1;
+
+cursor.style.width="170px";
+cursor.style.height="170px";
+
+}
+
+});
+</script>
+
+</body>
+</html>

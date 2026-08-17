@@ -7,8 +7,9 @@ import { DURATION, EASING } from "@/lib/motion"
 
 /* ─── Nav links ───────────────────────────────────────────────── */
 const links = [
-  { label: "Work",  href: "#work"    },
-  { label: "About", href: "#about"   },
+  { label: "Work",  href: "/#work"  },
+  { label: "About", href: "/#about" },
+  { label: "Books", href: "/books"  },
 ]
 
 /* ─── Threshold: navbar switches from dark to light mode.
@@ -87,7 +88,7 @@ export default function Navbar() {
             ))}
 
             <a
-              href="#contact"
+              href="/#contact"
               className={[
                 "text-[13px] font-medium transition-all duration-500 pb-px",
                 scrolled
@@ -178,7 +179,7 @@ export default function Navbar() {
               ))}
 
               <m.a
-                href="#contact"
+                href="/#contact"
                 onClick={closeMenu}
                 className="font-serif italic text-surface hover:opacity-70 transition-opacity"
                 style={{ fontSize: "var(--text-title)" }}

@@ -1,4 +1,4 @@
-export const SITE_URL  = "https://artemaxen.com"
+export const SITE_URL  = "https://artemisaxen.com"
 export const SITE_NAME = "Artemis Axen"
 
 export const META = {

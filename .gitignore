@@ -65,3 +65,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env*
+
+# raw/reference image & video assets — stay local, never in git.
+# Web-optimized versions that actually ship go through Vercel Blob instead.
+bible/characters/characters_images/
+bible/scenes/stock_photos/
+bible/*.pdf

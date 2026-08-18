@@ -1,0 +1,132 @@
+[
+  {
+    "id": "ch00-scene-01",
+    "chapter": 0,
+    "order": 1,
+    "afterParagraph": 1,
+    "type": "establishing",
+    "characters": [],
+    "location": "London street, night",
+    "mood": "melancholic, uneasy stillness",
+    "narrative": "The rain has just stopped over London; the city sits frozen, unsure whether to wake up after the storm.",
+    "imagePrompt": "A photorealistic, cinematic noir photograph of a rain-soaked London street at night, wide shot. Wet asphalt reflecting streetlights, a double-decker bus passing in the middle distance, its shape reflected in puddles. A few pedestrians hurry past with collars turned up against the cold. Moody lighting in a teal-and-amber palette, cold and humid atmosphere, shallow depth of field on the foreground puddle reflections.",
+    "videoPrompt": "Slow, static wide shot holding on the empty rain-slicked street; a bus passes once in the background; very subtle ambient motion (steam rising from a grate, a single pedestrian crossing) to suggest a held breath before the story begins.",
+    "asset": {
+      "status": "ready",
+      "filename": "b01.png",
+      "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/books/dont-develop/ru/chapter-00/b01.png",
+      "width": 1344,
+      "height": 768,
+      "alt": "Rain-soaked London street at night, double-decker bus reflections in wet pavement",
+      "note": "Reused from the earlier Draw Things pass — a stronger photorealistic establishing shot can replace it later."
+    }
+  },
+  {
+    "id": "ch00-scene-02",
+    "chapter": 0,
+    "order": 2,
+    "afterParagraph": 3,
+    "type": "character",
+    "characters": ["michael"],
+    "location": "Michael's home office, London",
+    "mood": "isolated, exhausted",
+    "narrative": "Michael sits alone at his desk late at night, the glow of several monitors the only light in the cluttered room, having just closed his last window and rubbed the bridge of his nose.",
+    "imagePrompt": "A photorealistic, cinematic noir photograph of a man sitting alone at a cluttered desk in a dark home office at night, seen from a three-quarter angle so his face is visible but not the sole subject. The only light source is the cold glow of three computer monitors in front of him; papers and a forgotten coffee cup are scattered on the desk. He looks exhausted, one hand raised to rub the bridge of his nose. Photorealistic noir cinematography, teal-and-amber palette, shallow depth of field. [Use the canonical Michael reference image for facial consistency instead of describing his appearance in text.]",
+    "videoPrompt": "Slow push-in on Michael from behind/three-quarter angle; subtle breathing motion; monitor glow flickers faintly as error text scrolls; he rubs his eyes and leans back.",
+    "asset": {
+      "status": "ready",
+      "filename": "scene-02.png",
+      "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/books/dont-develop/ru/chapter-00/scene-02.png",
+      "width": 1622,
+      "height": 970,
+      "alt": "Michael sitting at his desk at night, lit by a monitor, London skyline visible through the window behind him"
+    }
+  },
+  {
+    "id": "ch00-scene-03",
+    "chapter": 0,
+    "order": 3,
+    "afterParagraph": 24,
+    "type": "atmospheric",
+    "characters": [],
+    "location": "Narrow staircase outside Michael's office",
+    "mood": "tense, ominous approach",
+    "narrative": "Confident, unhurried footsteps climb the wooden staircase toward his office door — not the pace of someone caught in the rain, but of someone who knows exactly where they're going.",
+    "imagePrompt": "A photorealistic, cinematic noir photograph looking down a dark, narrow wooden staircase from above. A single indistinct silhouette of a woman climbing is visible mid-stair, backlit by a dim bare bulb. Tense, noir mood, high contrast between the warm bulb light and the surrounding darkness, grain and shadow suggesting suspense.",
+    "videoPrompt": "Static overhead angle on the staircase; the silhouette climbs steadily into frame and out again toward the top, footstep sounds synced to each step, light flickering once.",
+    "asset": {
+      "status": "ready",
+      "filename": "scene-03.jpg",
+      "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/books/dont-develop/ru/chapter-00/scene-03.jpg",
+      "width": 1170,
+      "height": 650,
+      "alt": "High-contrast overhead view of a wooden staircase, a woman's shadow cast across the steps",
+      "note": "High-contrast black-and-white treatment rather than the teal-amber palette used elsewhere — reads as a strong outlier stylistically; worth a consistency pass before finalizing."
+    }
+  },
+  {
+    "id": "ch00-scene-04",
+    "chapter": 0,
+    "order": 4,
+    "afterParagraph": 29,
+    "type": "close-up",
+    "characters": ["helen"],
+    "location": "Michael's office doorway",
+    "mood": "cold, controlled menace",
+    "narrative": "Helen enters, soaked through — dark tailored coat, damp dark hair stuck to pale cheeks, thin leather gloves — carrying a plain grey cardboard folder with cloth ties, utterly unbothered by the rain still clinging to her.",
+    "imagePrompt": "A photorealistic, cinematic noir close-to-medium portrait of a composed woman in her mid-thirties standing in a doorway at night. She wears a dark, formal-cut, floor-length coat soaked dark at the shoulders with rain; her dark hair is damp and loosely stuck to pale cheeks; she wears thin leather gloves and holds a plain grey cardboard folder with cloth ties against her body. Her expression is controlled, unreadable. Lit from behind by a dim hallway bulb, teal-and-amber palette, shallow depth of field, photorealistic noir cinematography. [Use the canonical Helen reference image for facial consistency instead of describing her appearance in text.]",
+    "videoPrompt": "Helen stands still in the doorway for a beat, then takes one deliberate step forward into the room; rain drips once from her coat; her eyes move slowly across the room before settling on camera.",
+    "asset": {
+      "status": "ready",
+      "filename": "scene-04.png",
+      "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/books/dont-develop/ru/chapter-00/scene-04.png",
+      "width": 1672,
+      "height": 941,
+      "alt": "Helen standing in a dark wood-paneled hallway beside a staircase, holding a folder, facing a door marked PRIVATE"
+    }
+  },
+  {
+    "id": "ch00-scene-05",
+    "chapter": 0,
+    "order": 5,
+    "afterParagraph": 78,
+    "type": "close-up",
+    "characters": [],
+    "location": "Michael's desk",
+    "mood": "clinical dread",
+    "narrative": "The grey folder lies open on the desk, revealing page after page of dense printed tables — numbers, dates, hexadecimal hashes — under the warm light of the desk lamp.",
+    "imagePrompt": "A photorealistic, cinematic noir close-up, macro shot of an open grey cardboard folder on a dark wooden desk, revealing printed A4 pages densely packed with tables of numbers, dates, and hexadecimal hashes. Warm desk-lamp light falls across the page at a dramatic angle, casting sharp shadows from the paper's texture. Shallow depth of field, noir still life.",
+    "videoPrompt": "Static macro shot; a hand enters frame and slowly turns one page, lamp light catching the edge of the paper as it moves.",
+    "asset": {
+      "status": "ready",
+      "filename": "scene-05.png",
+      "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/books/dont-develop/ru/chapter-00/scene-05.png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Michael standing in his office, reading an open folder of printed data tables, London's Gherkin tower visible through the window",
+      "note": "Shows Michael reacting to the data rather than a macro of the folder alone — a stronger, more narrative framing than the original prompt asked for."
+    }
+  },
+  {
+    "id": "ch00-scene-06",
+    "chapter": 0,
+    "order": 6,
+    "afterParagraph": 117,
+    "type": "atmospheric",
+    "characters": [],
+    "location": "Michael's office window",
+    "mood": "ominous quiet, held breath",
+    "narrative": "Rain streaks down the dark window; a single droplet is caught mid-fall in the quiet just before the silence breaks.",
+    "imagePrompt": "A photorealistic, cinematic noir macro photograph of a dark, rain-streaked window at night, a single droplet caught mid-fall on the glass. A faint, indistinct silhouette reflection is barely visible in the glass. Noir still life, cold blue-teal palette, shallow depth of field, quiet and still composition.",
+    "videoPrompt": "Extreme slow motion on the single droplet finishing its fall down the glass; ambient rain sound; cut is timed to end just as a phone begins to vibrate off-screen.",
+    "asset": {
+      "status": "ready",
+      "filename": "scene-06.jpg",
+      "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/books/dont-develop/ru/chapter-00/scene-06.jpg",
+      "width": 2066,
+      "height": 1170,
+      "alt": "An antique desk clock beside a rain-streaked window overlooking a wet London street at night",
+      "note": "Combines the clock and rain-window motifs from the text in one shot."
+    }
+  }
+]

@@ -43,6 +43,45 @@ export type Scene = {
   images:     SceneImage[]
 }
 
+/* ─── Scene plan (Step 3b) ───────────────────────────────────────────
+   The single canonical visual layer of the book: one Scene = one
+   atomic visual beat, generated once per chapter from the manuscript
+   + Character/Truth Bible. Not a container of several images like the
+   Step 3a `Scene` type above.
+
+   This is the one and only scene breakdown per chapter — the website
+   and the video pipeline both consume it (video derives multiple
+   "beats" downstream from a Scene's asset; it does not get its own
+   separate scene breakdown). Lives in bible/scenes/chapter-NN-scenes.json.
+
+   Not wired into any page yet — reader UI changes are a separate,
+   later, separately-approved step.
+─────────────────────────────────────────────────────────────────── */
+export type SceneAsset = {
+  status:   "needed" | "ready"
+  filename: string
+  url?:     string
+  width?:   number
+  height?:  number
+  alt?:     string
+  note?:    string
+}
+
+export type ScenePlan = {
+  id:             string
+  chapter:        number
+  order:          number
+  afterParagraph: number
+  type:           "establishing" | "character" | "close-up" | "action" | "atmospheric"
+  characters:     string[]
+  location:       string
+  mood:           string
+  narrative:      string
+  imagePrompt:    string
+  videoPrompt?:   string
+  asset:          SceneAsset
+}
+
 export const BOOK_SLUG  = "dont-develop"
 export const BOOK_TITLE = "Don't Develop"
 

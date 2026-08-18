@@ -1,16 +1,13 @@
+import Link from "next/link"
 import FadeIn from "@/components/ui/FadeIn"
 import SectionLabel from "@/components/ui/SectionLabel"
 
-export default function BooksSection() {
+export default function BookHero() {
   return (
     <section
-      className="min-h-[100dvh] flex items-center justify-center"
-      style={{
-        padding: "0 min(10vw, 100px)",
-        background:
-          "radial-gradient(ellipse at 50% 0%, #1e3a5f 0%, #0d1829 50%, #06111e 100%) fixed",
-      }}
-      aria-label="Books"
+      className="min-h-[70vh] flex items-center justify-center"
+      style={{ padding: "120px min(10vw, 100px) 60px" }}
+      aria-label="Don't Develop"
     >
       <div className="text-center max-w-3xl">
         <FadeIn direction="up" amount={0.3}>
@@ -43,9 +40,14 @@ export default function BooksSection() {
         </FadeIn>
 
         <FadeIn direction="up" amount={0.3} delay={0.2}>
-          <p className="mt-16 text-[11px] font-medium uppercase tracking-[0.12em] text-surface/30">
-            Coming soon
-          </p>
+          <Link
+            href="/books/dont-develop/ru/chapter/0"
+            className="inline-block mt-16 text-[13px] font-medium uppercase tracking-[0.12em]
+                       text-surface border-b border-surface/40 hover:border-surface pb-1
+                       transition-colors duration-300"
+          >
+            Start reading →
+          </Link>
         </FadeIn>
       </div>
     </section>

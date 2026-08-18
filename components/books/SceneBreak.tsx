@@ -3,7 +3,13 @@ import type { ScenePlan } from "@/lib/books"
 
 const WIDE_TYPES = new Set(["establishing", "atmospheric"])
 
-export default function SceneBreak({ scene }: { scene: ScenePlan }) {
+export default function SceneBreak({
+  scene,
+  priority = false,
+}: {
+  scene:     ScenePlan
+  priority?: boolean
+}) {
   const { asset } = scene
   if (asset.status !== "ready" || !asset.url || !asset.width || !asset.height) return null
 
@@ -25,6 +31,7 @@ export default function SceneBreak({ scene }: { scene: ScenePlan }) {
           fill
           sizes={wide ? "(min-width: 900px) 880px, 100vw" : "(min-width: 700px) 680px, 100vw"}
           className="object-cover"
+          priority={priority}
         />
       </div>
     </div>

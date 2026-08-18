@@ -17,6 +17,10 @@ export default function ChapterBody({
     scenesByParagraph.set(scene.afterParagraph, list)
   }
 
+  // Only the first image on the page is a realistic LCP candidate —
+  // giving every image `priority` would force them all to load eagerly.
+  const firstReadySceneId = scenes.find((s) => s.asset.status === "ready")?.id
+
   return (
     <div className="space-y-6">
       {paragraphs.map((paragraph, i) => (
@@ -27,7 +31,7 @@ export default function ChapterBody({
             )}
           </p>
           {(scenesByParagraph.get(i) ?? []).map((scene) => (
-            <SceneBreak key={scene.id} scene={scene} />
+            <SceneBreak key={scene.id} scene={scene} priority={scene.id === firstReadySceneId} />
           ))}
         </div>
       ))}

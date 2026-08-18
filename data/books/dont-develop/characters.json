@@ -1,0 +1,105 @@
+[
+  {
+    "id": "michael",
+    "name": "Michael Lawson",
+    "aliases": ["Майкл", "Майкл Лоусон", "Майклом", "Майкла"],
+    "type": "human",
+    "referenceImages": [
+      {
+        "id": "michael-canon-closeup",
+        "type": "character",
+        "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/characters/michael/canon_closeup.png",
+        "width": 262,
+        "height": 199,
+        "alt": "Michael, close-up portrait reference"
+      },
+      {
+        "id": "michael-emotional-portrait",
+        "type": "character",
+        "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/characters/michael/emotional_portrait.png",
+        "width": 263,
+        "height": 199,
+        "alt": "Michael, emotional expression reference"
+      },
+      {
+        "id": "michael-full-body",
+        "type": "character",
+        "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/characters/michael/full_body.png",
+        "width": 262,
+        "height": 199,
+        "alt": "Michael, full body reference"
+      },
+      {
+        "id": "michael-side-profile",
+        "type": "character",
+        "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/characters/michael/side_profile.png",
+        "width": 262,
+        "height": 199,
+        "alt": "Michael, side profile reference"
+      },
+      {
+        "id": "michael-walking-shot",
+        "type": "character",
+        "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/characters/michael/walking_shot.png",
+        "width": 262,
+        "height": 199,
+        "alt": "Michael, walking pose reference"
+      }
+    ]
+  },
+  {
+    "id": "helen",
+    "name": "Helen",
+    "aliases": ["Элен"],
+    "type": "human",
+    "referenceImages": [
+      {
+        "id": "helen-canon-closeup",
+        "type": "character",
+        "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/characters/helen/canon_closeup.png",
+        "width": 262,
+        "height": 191,
+        "alt": "Helen, close-up portrait reference"
+      },
+      {
+        "id": "helen-emotional-portrait",
+        "type": "character",
+        "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/characters/helen/emotional_portrait.png",
+        "width": 263,
+        "height": 191,
+        "alt": "Helen, emotional expression reference"
+      },
+      {
+        "id": "helen-full-body",
+        "type": "character",
+        "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/characters/helen/full_body.png",
+        "width": 262,
+        "height": 191,
+        "alt": "Helen, full body reference"
+      },
+      {
+        "id": "helen-side-profile",
+        "type": "character",
+        "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/characters/helen/side_profile.png",
+        "width": 262,
+        "height": 191,
+        "alt": "Helen, side profile reference"
+      },
+      {
+        "id": "helen-walking-shot",
+        "type": "character",
+        "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/characters/helen/walking_shot.png",
+        "width": 262,
+        "height": 191,
+        "alt": "Helen, walking pose reference"
+      }
+    ]
+  },
+  {
+    "id": "clara",
+    "name": "Clara",
+    "aliases": ["Клава", "Клавы", "Клаве", "Клаву"],
+    "type": "voice",
+    "referenceImages": []
+  }
+]

@@ -4,8 +4,18 @@ import { notFound } from "next/navigation"
 import Navbar from "@/components/layout/Navbar"
 import Footer from "@/components/layout/Footer"
 import ChapterBody from "@/components/books/ChapterBody"
+import SceneGallery from "@/components/books/SceneGallery"
 import { SITE_NAME, SITE_URL } from "@/lib/metadata"
-import { getChapter, getChapters, getAdjacentChapters, getSupportedLangs, BOOK_TITLE } from "@/lib/books"
+import {
+  getChapter,
+  getChapters,
+  getAdjacentChapters,
+  getSupportedLangs,
+  getScenes,
+  getLanguageAlternates,
+  BOOK_SLUG,
+  BOOK_TITLE,
+} from "@/lib/books"
 
 type Params = { lang: string; chapter: string }
 
@@ -26,10 +36,15 @@ export async function generateMetadata({
   if (!chapter) return {}
 
   const url = `${SITE_URL}/books/dont-develop/${lang}/chapter/${num}`
+  const languages = getLanguageAlternates(BOOK_SLUG, num)
+
   return {
     title: `${chapter.title} · ${BOOK_TITLE} · ${SITE_NAME}`,
     description: `${BOOK_TITLE} — ${chapter.title}. A psychological techno-thriller by Artemis Axen.`,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      ...(Object.keys(languages).length > 1 ? { languages } : {}),
+    },
   }
 }
 
@@ -44,6 +59,7 @@ export default async function ChapterPage({
   if (!chapter) notFound()
 
   const { prev, next } = getAdjacentChapters(lang, num)
+  const scenes = getScenes(lang, num)
 
   return (
     <>
@@ -86,6 +102,10 @@ export default async function ChapterPage({
               {chapter.time}
             </p>
           </div>
+
+          {scenes.map((scene) => (
+            <SceneGallery key={scene.id} scene={scene} />
+          ))}
 
           <div
             className="font-serif text-[17px] leading-[1.85]"

@@ -1,6 +1,6 @@
 import ruChapters from "@/data/books/dont-develop/ru/chapters.json"
-import ruScenes from "@/data/books/dont-develop/ru/scenes.json"
 import charactersData from "@/data/books/dont-develop/characters.json"
+import chapter00Scenes from "@/bible/scenes/chapter-00-scenes.json"
 import { SITE_URL } from "@/lib/metadata"
 
 export type Chapter = {
@@ -33,29 +33,14 @@ export type Character = {
   referenceImages: SceneImage[]
 }
 
-export type Scene = {
-  id:         string
-  chapter:    number
-  order:      number
-  location:   string
-  timeOfDay:  string
-  characters: string[]
-  images:     SceneImage[]
-}
-
-/* ─── Scene plan (Step 3b) ───────────────────────────────────────────
+/* ─── Scene plan ─────────────────────────────────────────────────────
    The single canonical visual layer of the book: one Scene = one
    atomic visual beat, generated once per chapter from the manuscript
-   + Character/Truth Bible. Not a container of several images like the
-   Step 3a `Scene` type above.
-
-   This is the one and only scene breakdown per chapter — the website
-   and the video pipeline both consume it (video derives multiple
-   "beats" downstream from a Scene's asset; it does not get its own
-   separate scene breakdown). Lives in bible/scenes/chapter-NN-scenes.json.
-
-   Not wired into any page yet — reader UI changes are a separate,
-   later, separately-approved step.
+   + Character/Truth Bible. This is the one and only scene breakdown
+   per chapter — the website and the video pipeline both consume it
+   (video derives multiple "beats" downstream from a Scene's asset; it
+   does not get its own separate scene breakdown). Lives in
+   bible/scenes/chapter-NN-scenes.json.
 ─────────────────────────────────────────────────────────────────── */
 export type SceneAsset = {
   status:   "needed" | "ready"
@@ -146,18 +131,17 @@ export function getCharacter(id: string): Character | undefined {
   return CHARACTERS.find((c) => c.id === id)
 }
 
-/* ─── Scenes ─────────────────────────────────────────────────────────
-   Per-language, per-chapter. Only chapter 0 has data today — every
-   other chapter's getScenes() returns [] until it's populated.
+/* ─── Scene plans ────────────────────────────────────────────────────
+   Chapter-keyed, same registry shape as CHAPTERS_BY_LANG above. Only
+   chapter 0 has data today — adding a chapter later is one import +
+   one map entry here, nothing else changes.
 ─────────────────────────────────────────────────────────────────── */
-const SCENES_BY_LANG: Record<string, Scene[]> = {
-  ru: ruScenes as Scene[],
+const SCENE_PLANS_BY_CHAPTER: Record<number, ScenePlan[]> = {
+  0: chapter00Scenes as ScenePlan[],
 }
 
-export function getScenes(lang: string, chapterNum: number): Scene[] {
-  return (SCENES_BY_LANG[lang] ?? [])
-    .filter((s) => s.chapter === chapterNum)
-    .sort((a, b) => a.order - b.order)
+export function getScenePlan(chapter: number): ScenePlan[] {
+  return (SCENE_PLANS_BY_CHAPTER[chapter] ?? []).slice().sort((a, b) => a.order - b.order)
 }
 
 /* ─── Body text rendering ─────────────────────────────────────────

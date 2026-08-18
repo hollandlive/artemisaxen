@@ -4,14 +4,13 @@ import { notFound } from "next/navigation"
 import Navbar from "@/components/layout/Navbar"
 import Footer from "@/components/layout/Footer"
 import ChapterBody from "@/components/books/ChapterBody"
-import SceneGallery from "@/components/books/SceneGallery"
 import { SITE_NAME, SITE_URL } from "@/lib/metadata"
 import {
   getChapter,
   getChapters,
   getAdjacentChapters,
   getSupportedLangs,
-  getScenes,
+  getScenePlan,
   getLanguageAlternates,
   BOOK_SLUG,
   BOOK_TITLE,
@@ -59,7 +58,7 @@ export default async function ChapterPage({
   if (!chapter) notFound()
 
   const { prev, next } = getAdjacentChapters(lang, num)
-  const scenes = getScenes(lang, num)
+  const scenes = getScenePlan(num)
 
   return (
     <>
@@ -85,16 +84,16 @@ export default async function ChapterPage({
           backgroundSize:   "100% 100vh",
         }}
       >
-        <div className="max-w-[680px] mx-auto" style={{ padding: "120px 24px 100px" }}>
+        <div className="max-w-[880px] mx-auto" style={{ padding: "120px 24px 100px" }}>
           <Link
             href="/books/dont-develop"
-            className="text-[13px] uppercase tracking-[0.1em] hover:opacity-70 transition-opacity"
+            className="max-w-[680px] mx-auto block text-[13px] uppercase tracking-[0.1em] hover:opacity-70 transition-opacity"
             style={{ color: "#8a96aa" }}
           >
             ← {BOOK_TITLE}
           </Link>
 
-          <div className="text-center mt-12 mb-14">
+          <div className="max-w-[680px] mx-auto text-center mt-12 mb-14">
             <h1 className="font-serif text-[28px] mb-2" style={{ color: "#e8e6e1" }}>
               {chapter.title}
             </h1>
@@ -103,18 +102,14 @@ export default async function ChapterPage({
             </p>
           </div>
 
-          {scenes.map((scene) => (
-            <SceneGallery key={scene.id} scene={scene} />
-          ))}
-
           <div
             className="font-serif text-[17px] leading-[1.85]"
             style={{ color: "#e8e6e1" }}
           >
-            <ChapterBody body={chapter.body} />
+            <ChapterBody body={chapter.body} scenes={scenes} />
           </div>
 
-          <div className="flex gap-3 mt-20">
+          <div className="max-w-[680px] mx-auto flex gap-3 mt-20">
             <ChapterNavLink lang={lang} chapter={prev} label="Назад" />
             <ChapterNavLink lang={lang} chapter={next} label="Далее" align="right" />
           </div>

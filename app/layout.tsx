@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Inter, Fraunces } from "next/font/google"
 import MotionProvider from "@/components/layout/MotionProvider"
+import GoogleAnalytics from "@/components/layout/GoogleAnalytics"
 import { META, SITE_URL, STRUCTURED_DATA } from "@/lib/metadata"
 import "./globals.css"
 
@@ -65,6 +66,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
+        <GoogleAnalytics />
         <MotionProvider>
           {children}
         </MotionProvider>

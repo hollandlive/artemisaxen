@@ -13,12 +13,11 @@
     "videoPrompt": "Slow, static wide shot holding on the empty rain-slicked street; a bus passes once in the background; very subtle ambient motion (steam rising from a grate, a single pedestrian crossing) to suggest a held breath before the story begins.",
     "asset": {
       "status": "ready",
-      "filename": "b01.png",
-      "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/books/dont-develop/ru/chapter-00/b01.png",
-      "width": 1344,
-      "height": 768,
-      "alt": "Rain-soaked London street at night, double-decker bus reflections in wet pavement",
-      "note": "Reused from the earlier Draw Things pass — a stronger photorealistic establishing shot can replace it later."
+      "filename": "scene-01.jpg",
+      "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/books/dont-develop/ru/chapter-00/scene-01.jpg",
+      "width": 2068,
+      "height": 1170,
+      "alt": "A red double-decker bus and pedestrians on a rain-soaked London street at dusk, wet pavement reflecting streetlights"
     }
   },
   {

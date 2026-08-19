@@ -1,0 +1,167 @@
+[
+  {
+    "id": "ch01-scene-01",
+    "chapter": 1,
+    "order": 1,
+    "afterParagraph": 7,
+    "type": "character",
+    "characters": ["michael", "helen"],
+    "location": "Michael's office, London",
+    "mood": "tense standoff, composure cracking",
+    "narrative": "Michael demands a name for whoever is behind this. Helen's icy professional composure cracks for the first time — not into a shout, but into a visible, days-deep exhaustion breaking through.",
+    "imagePrompt": "A photorealistic, cinematic noir medium shot of a man and woman facing each other in Michael's home office at night — the same room established in the Prologue (dark desk, monitor glow, city-view window behind the desk, the same visual world as mic_sitting_at_desk_watching_screen.PNG and michael_folder_at_office_holding.PNG). Both are standing close, tense. The woman's controlled expression is just beginning to show cracks of exhaustion; the man's jaw is tight, mid-demand. Moody single-source lighting, teal-and-amber palette, shallow depth of field, photorealistic noir cinematography. [Use the canonical Michael and Helen reference images for facial consistency, and attach mic_sitting_at_desk_watching_screen.PNG / michael_folder_at_office_holding.PNG as location references, instead of inventing a new office.]",
+    "videoPrompt": "Static medium two-shot; subtle breathing, a held eye-line between them; Helen's shoulders drop almost imperceptibly on her line as the facade cracks.",
+    "videoPlan": {
+      "primaryMotion": "Michael's mouth moves slightly as if mid-demand; Helen's controlled expression flickers with a trace of fatigue breaking through.",
+      "secondaryMotion": "A slow, natural blink from both; a brief tightening of Michael's jaw.",
+      "ambientMotion": "Faint city lights twinkle in the background window; a sliver of terminal-text glow flickers very subtly on the monitor between them — no readable text change.",
+      "camera": "Completely static, locked-off tripod shot. The camera must not pan, orbit, rotate, dolly, or move in any way, and the subjects' profile-facing orientation to each other and to camera must not change.",
+      "mustStayStatic": ["both faces' identity/features", "wardrobe", "hair", "their blocking/positions", "the window skyline", "desk and monitor position", "the two practical light sources (ceiling lamp, desk lamp)", "the exact camera angle and framing"],
+      "mustNotHappen": ["no new characters entering frame", "no face morphing", "no wardrobe change", "no camera cut, pan, orbit, or teleport of any kind", "no on-screen text appearing", "no change to time of day or location", "no change in the subjects' orientation toward camera"],
+      "durationSeconds": 8,
+      "finalPrompt": "Animate this exact image with no changes to the characters, wardrobe, location, or lighting. Motion: the man's mouth moves slightly as if speaking urgently; the woman's controlled expression flickers with a trace of fatigue, both blink naturally once. Camera: completely static, locked-off tripod shot — the camera must not pan, orbit, rotate, or move around the subjects in any way, and their profile-facing orientation to each other must stay exactly as shown throughout. Ambient: faint city lights twinkle in the background window; a sliver of terminal-text glow flickers subtly on the monitor behind them, no readable text change. Keep both faces, clothing, hair, the room, and the exact camera angle unchanged for the full duration. No new characters, no face morphing, no camera movement of any kind.",
+      "generated": {
+        "provider": "google-veo",
+        "model": "veo-3.1-lite",
+        "resolutionActual": "1280x720",
+        "durationSecondsActual": 8,
+        "localFilename": "Man_speaking_to_woman_202608181816.mp4",
+        "verdict": "needs-retry",
+        "qaNotes": "v1 result: frame 0 matched the source still almost exactly, character/wardrobe/location consistency held for all 8s, but the camera ignored 'near-imperceptible push-in only, no pans' and performed a large orbital move, rotating both characters from pure profile to near-frontal by the final frame. finalPrompt above is v2 — camera constraint hardened to explicitly forbid orbit/rotation, not just pans. Not yet retried."
+      }
+    },
+    "asset": {
+      "status": "ready",
+      "filename": "hele_michael_dark_office_starring_each_other.PNG",
+      "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/books/dont-develop/ru/chapter-01/scene-01.png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Michael and Helen standing face to face in a dark office at night, city skyline visible through the window behind them",
+      "note": "Window shows St. Paul's dome here vs. the Gherkin in the Prologue's scene-05 — a minor cross-chapter landmark inconsistency, accepted for this pipeline test."
+    }
+  },
+  {
+    "id": "ch01-scene-02",
+    "chapter": 1,
+    "order": 2,
+    "afterParagraph": 13,
+    "type": "close-up",
+    "characters": ["michael"],
+    "location": "Michael's office, London",
+    "mood": "dread, uncanny",
+    "narrative": "The monitor Michael is certain he unplugged switches on by itself: a stark, hospital-white screen with nothing on it but a single black cursor.",
+    "imagePrompt": "A photorealistic, cinematic close-up of a man's face lit starkly from the side by a large blank white computer monitor in an otherwise dark room. The screen shows nothing but a single black text cursor on pure white. His expression is frozen, unsettled. Cold, clinical white light contrasting hard against the surrounding darkness, photorealistic noir cinematography, shallow depth of field. [Use the canonical Michael reference image for facial consistency instead of describing his appearance in text.]",
+    "videoPrompt": "Slow push-in on Michael's face, lit by the cold white glow; the cursor blinks steadily in the reflection of his eyes; his expression shifts from confusion to dread.",
+    "videoPlan": {
+      "primaryMotion": "Almost imperceptible push-in on Michael's face.",
+      "secondaryMotion": "A natural blink; subtle tension building around his eyes as dread sets in.",
+      "ambientMotion": "The cursor on the blank white screen blinks at a steady, natural rate — it is a thin vertical text-caret bar, never a mouse-arrow pointer or any other shape.",
+      "camera": "Slow, static push-in only. No shake, no pan, no cut.",
+      "mustStayStatic": ["Michael's face/identity", "hair, clothing", "the screen's blank white color and framing", "the cursor's shape (a thin vertical text-caret bar) and position — only its visibility blinks on/off", "color temperature/lighting"],
+      "mustNotHappen": ["no text or UI elements appear on screen beyond the existing cursor", "no camera shake or teleport", "no change in lighting color", "no new elements entering frame", "the cursor must never change into a mouse-arrow pointer or any other icon shape"],
+      "durationSeconds": 6,
+      "finalPrompt": "Animate this exact image with no changes to the character, screen content, or lighting. Motion: an almost imperceptible push-in on his face; a natural blink; subtle tension building around his eyes. Ambient: the cursor on the blank white screen is a thin vertical text-caret bar (like a blinking text-input cursor, not a mouse-arrow pointer) — it blinks on and off at a steady natural rate but its shape and position never change, and no other text or elements appear on screen. Camera: slow, static push-in only, no shake, no pan. Keep his face, hair, clothing, and the screen's blank white color exactly as shown. No new text, no camera teleportation, no cursor shape change.",
+      "generated": {
+        "provider": "google-veo",
+        "model": "veo-3.1-lite",
+        "resolutionActual": "1280x720",
+        "durationSecondsActual": 8,
+        "localFilename": "michael_white_screen_blinking.mp4",
+        "verdict": "needs-retry",
+        "qaNotes": "v1 result: face/identity/wardrobe held perfectly for the full clip. But the cursor changed type partway through — starts as the correct text caret ('I' bar) matching the source still, then morphs into a mouse-arrow pointer by ~t=3s and stays an arrow for the rest of the clip. That breaks the actual plot device (a text cursor typing on its own), not just an aesthetic nitpick. finalPrompt above is v2 — now explicitly names the cursor as a text-caret bar and forbids it turning into an arrow. Not yet retried."
+      }
+    },
+    "asset": {
+      "status": "ready",
+      "filename": "michael_white_monitor_watchning_worried.PNG",
+      "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/books/dont-develop/ru/chapter-01/scene-02.png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Michael's face lit by a blank white monitor showing a single blinking cursor, dark room"
+    }
+  },
+  {
+    "id": "ch01-scene-03",
+    "chapter": 1,
+    "order": 3,
+    "afterParagraph": 27,
+    "type": "action",
+    "characters": ["michael", "helen"],
+    "location": "Michael's office, London",
+    "mood": "sudden physical urgency, fear",
+    "narrative": "As letters keep appearing on the screen and Michael steps toward it as if hypnotized, Helen grabs his sleeve with sudden force and yanks him back, shouting at him not to get near it.",
+    "imagePrompt": "A photorealistic, cinematic action shot: a woman gripping a man's jacket sleeve with both hands, pulling him backward away from a glowing white computer screen in a dark office. Her leather-gloved hands are tight on the fabric; his body is caught mid-motion, still leaning toward the screen. Dramatic contrast between the cold white screen glow and the dark room, photorealistic noir cinematography, motion blur suggesting sudden movement. [Use the canonical Michael and Helen reference images for facial consistency instead of describing their appearance in text.]",
+    "videoPrompt": "Quick, sudden motion: Helen's hand grips his sleeve, a sharp pull back, his weight shifting off-balance; camera shakes slightly with the motion, screen glow flickers in the background.",
+    "videoPlan": {
+      "primaryMotion": "Helen pulls Michael backward and off his feet, away from the desk — he must end the clip farther from the monitor than he started, stumbling back toward her, not leaning further toward the screen.",
+      "secondaryMotion": "Her face shows urgent concern; his expression shifts from fixation on the screen to startled awareness of her as his balance breaks.",
+      "ambientMotion": "The monitor's screen stays exactly as shown — a single unmoving cursor, nothing else.",
+      "camera": "Subtle handheld-style micro-movement only, reacting to the motion — no pans, no hard cuts, no exaggerated shake.",
+      "mustStayStatic": ["both faces/identity", "wardrobe (her coat and gloves, his jacket)", "the room and desk layout", "the window skyline", "the monitor's single-cursor content"],
+      "mustNotHappen": ["no new characters", "no face morphing", "no falling or exaggerated physical comedy", "no camera cut/teleport", "no text or additional marks appearing on the screen beyond the single existing cursor", "no wardrobe change", "no motion where he ends up closer to the desk/monitor than he started"],
+      "durationSeconds": 6,
+      "finalPrompt": "Animate this exact image with no changes to the characters, wardrobe, location, or lighting. Motion: the woman pulls the man backward and off his feet, away from the desk — he must end the clip farther from the monitor than he started, stumbling backward toward her rather than leaning further toward the screen. Camera: subtle handheld micro-movement only, no pans, no cuts. Ambient: the monitor's screen stays exactly as shown — a single unmoving cursor, no additional marks, letters, or UI elements may appear. Keep both faces, clothing, and the room exactly as shown. No new characters, no morphing, no camera teleportation.",
+      "generated": {
+        "provider": "google-veo",
+        "model": "veo-3.1-lite",
+        "resolutionActual": "1280x720",
+        "durationSecondsActual": 8,
+        "localFilename": "Woman_pulls_man_backward_202608181816.mp4",
+        "verdict": "needs-retry",
+        "qaNotes": "v1 result: frame 0 matched the source still, character/wardrobe/location/contact held throughout, but the motion went the wrong direction — he leaned progressively INTO the desk toward the monitor instead of being pulled away from it, and the screen drifted from one cursor to what reads as two vertical marks by mid-clip. finalPrompt above is v2 — added an explicit directional/end-state cue ('ends the clip farther from the monitor') and hardened the cursor constraint to forbid any additional marks. Not yet retried."
+      }
+    },
+    "asset": {
+      "status": "ready",
+      "filename": "helen_catching_michael_hand_dark_office.PNG",
+      "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/books/dont-develop/ru/chapter-01/scene-03.png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Helen gripping Michael's arm, pulling him back from his desk in a dark office"
+    }
+  },
+  {
+    "id": "ch01-scene-04",
+    "chapter": 1,
+    "order": 4,
+    "afterParagraph": 34,
+    "type": "close-up",
+    "characters": [],
+    "location": "Michael's office monitor screen",
+    "mood": "dread, uncanny cliffhanger",
+    "narrative": "The screen finishes spelling out a single word — \"Клава.\" — and immediately below it, a system status bar reads \"...печатает сообщение.\"",
+    "imagePrompt": "A photorealistic, cinematic macro shot of a computer monitor glowing stark white in a dark room, screen left blank/empty (no readable text — exact copy is composited afterward, see overlayText). Cold clinical light spilling into the surrounding darkness, photorealistic noir cinematography, shallow depth of field on the screen surface, composition leaving clear open space center-screen for text to be added in post.",
+    "videoPrompt": "Static macro shot on the screen, left blank for the same reason as the image (see overlayText) — a faint flicker in the white glow suggests something waiting on the other end. Add the typing-indicator text and its pulsing-dots animation in post, not via the video model.",
+    "overlayText": [
+      { "text": "Клава.", "note": "The single word that finishes appearing on screen — exact spelling/capitalization matters, do not let a generative model render this." },
+      { "text": "…печатает сообщение.", "note": "System status line directly beneath it, styled like a chat app's typing indicator." }
+    ],
+    "videoPlan": {
+      "primaryMotion": "Nearly static — only a very faint pulse/flicker in the white screen's glow, suggesting something waiting on the other end.",
+      "secondaryMotion": "None.",
+      "ambientMotion": "A slow, subtle brightness pulse in the white glow, like a breathing light.",
+      "camera": "Fully static. No movement whatsoever.",
+      "mustStayStatic": ["the entire composition/framing", "the blank screen (no text, ever)", "the dark room and blurred bookshelf background", "color temperature"],
+      "mustNotHappen": ["no text, letters, or UI elements may appear at any point in the clip", "no camera movement", "no new light sources", "no characters entering frame"],
+      "durationSeconds": 4,
+      "finalPrompt": "Animate this exact image with no changes to the composition or lighting. Motion: nearly static — only a very faint pulse/flicker in the white screen's glow, suggesting something waiting on the other end. Camera: fully static, no movement whatsoever. The screen must remain completely blank — no text, letters, or UI elements may appear at any point in this clip. No characters, no new light sources, no camera movement.",
+      "generated": {
+        "provider": "google-veo",
+        "model": "veo-3.1-lite",
+        "resolutionActual": "1280x720",
+        "durationSecondsActual": 8,
+        "localFilename": "white_screen_and_nothing.mp4",
+        "verdict": "approved",
+        "qaNotes": "Matches the prompt closely: fully static framing, screen stays completely blank for the whole clip (no text, no cursor, no artifacts), dark blurred bookshelf background unchanged. First clean pass — no retry needed."
+      }
+    },
+    "asset": {
+      "status": "ready",
+      "filename": "white_blank_screen_dark_office.PNG",
+      "url": "https://dns8kiiuuvobguls.public.blob.vercel-storage.com/books/dont-develop/ru/chapter-01/scene-04.png",
+      "width": 1536,
+      "height": 1024,
+      "alt": "Close-up of a blank white computer monitor glowing in a dark room, screen empty"
+    }
+  }
+]

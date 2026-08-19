@@ -70,4 +70,5 @@ next-env.d.ts
 # Web-optimized versions that actually ship go through Vercel Blob instead.
 bible/characters/characters_images/
 bible/scenes/stock_photos/
+bible/scenes/ch*/
 bible/*.pdf

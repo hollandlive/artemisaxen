@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import Navbar from "@/components/layout/Navbar"
 import Footer from "@/components/layout/Footer"
 import BookHero from "@/components/books/BookHero"
@@ -41,6 +42,17 @@ export default function DontDevelopPage() {
         }}
       >
         <BookHero />
+
+        <div className="text-center" style={{ padding: "0 min(10vw, 100px) 48px" }}>
+          <Link
+            href="/books/dont-develop/en/chapter/0"
+            className="inline-block text-[13px] uppercase tracking-[0.12em] border-b pb-1 transition-colors duration-300"
+            style={{ color: "#e8e6e1", borderColor: "#1e3050" }}
+          >
+            Read in English (Prologue &amp; Chapter 1) →
+          </Link>
+        </div>
+
         <ChapterList lang="ru" chapters={chapters} />
       </main>
 

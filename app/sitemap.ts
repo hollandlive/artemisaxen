@@ -1,16 +1,18 @@
 import type { MetadataRoute } from "next"
 import { SITE_URL } from "@/lib/metadata"
-import { BOOK_SLUG, getChapters } from "@/lib/books"
+import { BOOK_SLUG, getChapters, getSupportedLangs } from "@/lib/books"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
 
-  const chapterEntries: MetadataRoute.Sitemap = (getChapters("ru") ?? []).map((chapter) => ({
-    url:             `${SITE_URL}/books/${BOOK_SLUG}/ru/chapter/${chapter.num}`,
-    lastModified:    now,
-    changeFrequency: "yearly",
-    priority:        0.6,
-  }))
+  const chapterEntries: MetadataRoute.Sitemap = getSupportedLangs().flatMap((lang) =>
+    (getChapters(lang) ?? []).map((chapter) => ({
+      url:             `${SITE_URL}/books/${BOOK_SLUG}/${lang}/chapter/${chapter.num}`,
+      lastModified:    now,
+      changeFrequency: "yearly" as const,
+      priority:        0.6,
+    })),
+  )
 
   return [
     {

@@ -1,6 +1,8 @@
 import ruChapters from "@/data/books/dont-develop/ru/chapters.json"
+import enChapters from "@/data/books/dont-develop/en/chapters.json"
 import charactersData from "@/data/books/dont-develop/characters.json"
 import chapter00Scenes from "@/bible/scenes/chapter-00-scenes.json"
+import chapter01Scenes from "@/bible/scenes/chapter-01-scenes.json"
 import { SITE_URL } from "@/lib/metadata"
 
 export type Chapter = {
@@ -64,6 +66,37 @@ export type ScenePlan = {
   narrative:      string
   imagePrompt:    string
   videoPrompt?:   string
+  // Exact on-screen text (chat messages, UI copy) that generative models
+  // reliably mangle — kept as a literal string to composite in post
+  // (image overlay / video text layer) rather than left to the model.
+  // imagePrompt/videoPrompt should describe the shot with the screen
+  // left blank/empty, not attempt to render this text themselves.
+  overlayText?:   { text: string; note?: string }[]
+  // Image-to-video execution plan (Veo or similar) — separate from
+  // videoPrompt above. videoPrompt captures WHAT happens in the moment
+  // (written alongside imagePrompt, before a still existed); videoPlan
+  // captures HOW to animate the specific still that got approved,
+  // scoped to the minimum delta so the model doesn't redraw the scene.
+  videoPlan?: {
+    primaryMotion:    string
+    secondaryMotion?: string
+    ambientMotion?:   string
+    camera:           string
+    mustStayStatic:   string[]
+    mustNotHappen:    string[]
+    durationSeconds:  number
+    finalPrompt:      string
+    // Filled in after a generation attempt exists, for QA record-keeping.
+    generated?: {
+      provider:              string   // e.g. "google-veo", "seedance", "kling" — not locked to one vendor
+      model:                 string
+      resolutionActual:      string
+      durationSecondsActual: number
+      localFilename:         string
+      verdict:               "approved" | "needs-retry" | "rejected"
+      qaNotes:                string
+    }
+  }
   asset:          SceneAsset
 }
 
@@ -76,6 +109,7 @@ export const BOOK_TITLE = "Don't Develop"
 ─────────────────────────────────────────────────────────────────── */
 const CHAPTERS_BY_LANG: Record<string, Chapter[]> = {
   ru: ruChapters as Chapter[],
+  en: enChapters as Chapter[],
 }
 
 export function getSupportedLangs(): string[] {
@@ -132,12 +166,13 @@ export function getCharacter(id: string): Character | undefined {
 }
 
 /* ─── Scene plans ────────────────────────────────────────────────────
-   Chapter-keyed, same registry shape as CHAPTERS_BY_LANG above. Only
-   chapter 0 has data today — adding a chapter later is one import +
-   one map entry here, nothing else changes.
+   Chapter-keyed, same registry shape as CHAPTERS_BY_LANG above. Adding
+   a chapter later is one import + one map entry here, nothing else
+   changes.
 ─────────────────────────────────────────────────────────────────── */
 const SCENE_PLANS_BY_CHAPTER: Record<number, ScenePlan[]> = {
   0: chapter00Scenes as ScenePlan[],
+  1: chapter01Scenes as ScenePlan[],
 }
 
 export function getScenePlan(chapter: number): ScenePlan[] {

@@ -43,13 +43,20 @@ export default function DontDevelopPage() {
       >
         <BookHero />
 
-        <div className="text-center" style={{ padding: "0 min(10vw, 100px) 48px" }}>
+        <div className="text-center flex flex-col items-center gap-3" style={{ padding: "0 min(10vw, 100px) 48px" }}>
           <Link
             href="/books/dont-develop/ru/chapter/0"
             className="inline-block text-[13px] uppercase tracking-[0.12em] border-b pb-1 transition-colors duration-300"
             style={{ color: "#e8e6e1", borderColor: "#1e3050" }}
           >
             Read in Russian (full novel) →
+          </Link>
+          <Link
+            href="/books/dont-develop/about"
+            className="inline-block text-[13px] uppercase tracking-[0.12em] border-b pb-1 transition-colors duration-300"
+            style={{ color: "#8a96aa", borderColor: "#1e3050" }}
+          >
+            About the book &amp; author →
           </Link>
         </div>
 

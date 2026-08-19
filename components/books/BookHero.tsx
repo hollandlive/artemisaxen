@@ -41,7 +41,7 @@ export default function BookHero() {
 
         <FadeIn direction="up" amount={0.3} delay={0.2}>
           <Link
-            href="/books/dont-develop/ru/chapter/0"
+            href="/books/dont-develop/en/chapter/0"
             className="inline-block mt-16 text-[13px] font-medium uppercase tracking-[0.12em]
                        text-surface border-b border-surface/40 hover:border-surface pb-1
                        transition-colors duration-300"

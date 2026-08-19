@@ -179,6 +179,22 @@ export function getScenePlan(chapter: number): ScenePlan[] {
   return (SCENE_PLANS_BY_CHAPTER[chapter] ?? []).slice().sort((a, b) => a.order - b.order)
 }
 
+/* ─── Chapter videos ─────────────────────────────────────────────
+   Chapter-keyed, same registry shape as SCENE_PLANS_BY_CHAPTER above —
+   a chapter can have a companion YouTube video (e.g. an AI-narrated
+   version) for readers who'd rather watch than read. Optional; most
+   chapters have no entry.
+─────────────────────────────────────────────────────────────────── */
+export type ChapterVideo = { videoId: string; url: string }
+
+const CHAPTER_VIDEOS: Record<number, ChapterVideo> = {
+  0: { videoId: "xzpr_0D1clg", url: "https://youtu.be/xzpr_0D1clg" },
+}
+
+export function getChapterVideo(chapter: number): ChapterVideo | undefined {
+  return CHAPTER_VIDEOS[chapter]
+}
+
 /* ─── Body text rendering ─────────────────────────────────────────
    Reproduces the original reader's formatBody(): split on newlines,
    drop blank lines, treat *word* as italics. Returns plain data

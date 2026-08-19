@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import Navbar from "@/components/layout/Navbar"
 import Footer from "@/components/layout/Footer"
 import ChapterBody from "@/components/books/ChapterBody"
+import ChapterVideoLink from "@/components/books/ChapterVideoLink"
 import { SITE_NAME, SITE_URL } from "@/lib/metadata"
 import {
   getChapter,
@@ -11,6 +12,7 @@ import {
   getAdjacentChapters,
   getSupportedLangs,
   getScenePlan,
+  getChapterVideo,
   getLanguageAlternates,
   BOOK_SLUG,
   BOOK_TITLE,
@@ -59,6 +61,7 @@ export default async function ChapterPage({
 
   const { prev, next } = getAdjacentChapters(lang, num)
   const scenes = getScenePlan(num)
+  const video  = getChapterVideo(num)
 
   return (
     <>
@@ -102,12 +105,16 @@ export default async function ChapterPage({
             </p>
           </div>
 
+          {video && <ChapterVideoLink video={video} />}
+
           <div
             className="font-serif text-[17px] leading-[1.85]"
             style={{ color: "#e8e6e1" }}
           >
             <ChapterBody body={chapter.body} scenes={scenes} />
           </div>
+
+          {video && <div className="mt-20"><ChapterVideoLink video={video} /></div>}
 
           <div className="max-w-[680px] mx-auto flex gap-3 mt-20">
             <ChapterNavLink lang={lang} chapter={prev} label={lang === "en" ? "Back" : "Назад"} />

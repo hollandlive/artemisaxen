@@ -11,9 +11,10 @@ export const META = {
 } as const
 
 export const CONTACT = {
-  email:     "hello@artemaxen.com",
-  whatsapp:  "https://wa.me/30XXXXXXXXXX", // replace before launch
-  instagram: "https://instagram.com/artemaxen", // replace before launch
+  email:     "info@artemisaxen.com",
+  emailHref: "mailto:tom.aksen@gmail.com",
+  instagram: "https://instagram.com/artemistravelling",
+  youtube:   "https://www.youtube.com/@MrAIKoder",
 } as const
 
 export const STRUCTURED_DATA = {

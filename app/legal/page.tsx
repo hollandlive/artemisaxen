@@ -72,7 +72,7 @@ export default function LegalPage() {
               <h2 className="font-serif text-charcoal text-lg mb-2">Permissions</h2>
               <p>
                 For licensing, adaptation, translation, or any other use of the Work, contact{" "}
-                <a href={`mailto:${CONTACT.email}`} className="underline underline-offset-2">
+                <a href={CONTACT.emailHref} className="underline underline-offset-2">
                   {CONTACT.email}
                 </a>.
               </p>

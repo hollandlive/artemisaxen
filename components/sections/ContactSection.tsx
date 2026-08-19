@@ -5,7 +5,7 @@ const LINKS: { channel: string; display: string; href: string; external?: boolea
   {
     channel: "Email",
     display: CONTACT.email,
-    href:    `mailto:${CONTACT.email}`,
+    href:    CONTACT.emailHref,
   },
   {
     channel:  "Instagram",
@@ -14,9 +14,9 @@ const LINKS: { channel: string; display: string; href: string; external?: boolea
     external: true,
   },
   {
-    channel:  "WhatsApp",
-    display:  "Message on WhatsApp",
-    href:     CONTACT.whatsapp,
+    channel:  "YouTube",
+    display:  `@${CONTACT.youtube.split("@").pop()}`,
+    href:     CONTACT.youtube,
     external: true,
   },
 ]

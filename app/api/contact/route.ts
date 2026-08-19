@@ -19,7 +19,7 @@ export async function POST(request: Request) {
   }
 
   const { error } = await resend.emails.send({
-    from:    `Artemis Axen site <contact@${process.env.RESEND_EMAIL_DOMAIN}>`,
+    from:    `Artemis Axen site <onboarding@resend.dev>`,
     to:      [process.env.CONTACT_TO_EMAIL!],
     replyTo: email,
     subject: `New message from ${name}`,

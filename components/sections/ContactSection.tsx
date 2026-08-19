@@ -1,12 +1,8 @@
 import FadeIn      from "@/components/ui/FadeIn"
+import ContactForm from "@/components/sections/ContactForm"
 import { CONTACT } from "@/lib/metadata"
 
 const LINKS: { channel: string; display: string; href: string; external?: boolean }[] = [
-  {
-    channel: "Email",
-    display: CONTACT.email,
-    href:    CONTACT.emailHref,
-  },
   {
     channel:  "Instagram",
     display:  `@${CONTACT.instagram.split("/").pop()}`,
@@ -53,8 +49,15 @@ export default function ContactSection() {
           </p>
         </FadeIn>
 
+        {/* ── Message form ──────────────────────────────────── */}
+        <FadeIn direction="up" delay={0.20}>
+          <div className="mt-14 border-t" style={{ borderColor: "rgba(120,60,100,0.10)" }}>
+            <ContactForm />
+          </div>
+        </FadeIn>
+
         {/* ── Contact links ──────────────────────────────────── */}
-        <ul className="mt-14 list-none m-0 p-0" role="list">
+        <ul className="list-none m-0 p-0" role="list">
           {LINKS.map(({ channel, display, href, external }, i) => (
             <li
               key={channel}

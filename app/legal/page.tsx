@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Navbar from "@/components/layout/Navbar"
 import Footer from "@/components/layout/Footer"
-import { SITE_NAME, CONTACT } from "@/lib/metadata"
+import { SITE_NAME } from "@/lib/metadata"
 
 export const metadata: Metadata = {
   title: `Legal · ${SITE_NAME}`,
@@ -71,9 +71,9 @@ export default function LegalPage() {
             <section>
               <h2 className="font-serif text-charcoal text-lg mb-2">Permissions</h2>
               <p>
-                For licensing, adaptation, translation, or any other use of the Work, contact{" "}
-                <a href={CONTACT.emailHref} className="underline underline-offset-2">
-                  {CONTACT.email}
+                For licensing, adaptation, translation, or any other use of the Work, use the{" "}
+                <a href="/#contact" className="underline underline-offset-2">
+                  contact form
                 </a>.
               </p>
             </section>

@@ -11,8 +11,6 @@ export const META = {
 } as const
 
 export const CONTACT = {
-  email:     "info@artemisaxen.com",
-  emailHref: "mailto:tom.aksen@gmail.com",
   instagram: "https://instagram.com/artemistravelling",
   youtube:   "https://www.youtube.com/@MrAIKoder",
 } as const

@@ -17,6 +17,9 @@ export default function Footer() {
           <Link href="/legal" className="text-[12px] underline underline-offset-2" style={{ color: "#9B7060" }}>
             Legal
           </Link>
+          <Link href="/privacy" className="text-[12px] underline underline-offset-2" style={{ color: "#9B7060" }}>
+            Privacy
+          </Link>
           <p className="text-[12px]" style={{ color: "#9B7060" }}>
             Athens, Greece
           </p>

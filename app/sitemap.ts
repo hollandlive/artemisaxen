@@ -33,6 +33,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority:        0.9,
     },
+    {
+      url:             `${SITE_URL}/legal`,
+      lastModified:    now,
+      changeFrequency: "yearly",
+      priority:        0.3,
+    },
+    {
+      url:             `${SITE_URL}/privacy`,
+      lastModified:    now,
+      changeFrequency: "yearly",
+      priority:        0.3,
+    },
     ...chapterEntries,
   ]
 }

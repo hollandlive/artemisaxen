@@ -77,6 +77,16 @@ export default function LegalPage() {
                 </a>.
               </p>
             </section>
+
+            <section>
+              <h2 className="font-serif text-charcoal text-lg mb-2">Privacy</h2>
+              <p>
+                For information on how this site collects and uses visitor data, see the{" "}
+                <a href="/privacy" className="underline underline-offset-2">
+                  Privacy Policy
+                </a>.
+              </p>
+            </section>
           </div>
         </div>
       </main>

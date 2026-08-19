@@ -110,8 +110,8 @@ export default async function ChapterPage({
           </div>
 
           <div className="max-w-[680px] mx-auto flex gap-3 mt-20">
-            <ChapterNavLink lang={lang} chapter={prev} label="Назад" />
-            <ChapterNavLink lang={lang} chapter={next} label="Далее" align="right" />
+            <ChapterNavLink lang={lang} chapter={prev} label={lang === "en" ? "Back" : "Назад"} />
+            <ChapterNavLink lang={lang} chapter={next} label={lang === "en" ? "Next" : "Далее"} align="right" />
           </div>
         </div>
       </main>

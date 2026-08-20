@@ -61,6 +61,11 @@ export default function RootLayout({
       <head>
         <meta name="google-site-verification" content="3gyBvEEqbFXiBRymp9vTkozztcdANGZDpBv70RmGWq8" />
         <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9193385610386562"
+          crossOrigin="anonymous"
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(STRUCTURED_DATA),

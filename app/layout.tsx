@@ -59,15 +59,16 @@ export default function RootLayout({
       className={`${fraunces.variable} ${inter.variable}`}
     >
       <head>
+        <meta name="google-site-verification" content="3gyBvEEqbFXiBRymp9vTkozztcdANGZDpBv70RmGWq8" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(STRUCTURED_DATA),
           }}
         />
+        <GoogleAnalytics />
       </head>
       <body className="font-sans antialiased">
-        <GoogleAnalytics />
         <MotionProvider>
           {children}
         </MotionProvider>

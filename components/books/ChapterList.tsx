@@ -4,9 +4,11 @@ import type { Chapter } from "@/lib/books"
 export default function ChapterList({
   lang,
   chapters,
+  label,
 }: {
   lang:     string
   chapters: Chapter[]
+  label?:   string
 }) {
   return (
     <section
@@ -16,7 +18,7 @@ export default function ChapterList({
     >
       <div className="max-w-2xl mx-auto">
         <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-[#8a96aa] mb-6">
-          {chapters.length} chapters
+          {label ? `${label} · ` : ""}{chapters.length} chapters
         </p>
 
         <ol>

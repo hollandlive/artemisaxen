@@ -16,7 +16,8 @@ export const metadata: Metadata = {
 }
 
 export default function DontDevelopPage() {
-  const chapters = getChapters("ru") ?? []
+  const enChapters = getChapters("en") ?? []
+  const ruChapters = getChapters("ru") ?? []
 
   return (
     <>
@@ -60,7 +61,8 @@ export default function DontDevelopPage() {
           </Link>
         </div>
 
-        <ChapterList lang="ru" chapters={chapters} />
+        <ChapterList lang="en" chapters={enChapters} label="English" />
+        <ChapterList lang="ru" chapters={ruChapters} label="Russian" />
       </main>
 
       <Footer />

@@ -1,4 +1,5 @@
-import ruChapters from "@/data/books/dont-develop/ru/chapters.json"
+import fs from "node:fs"
+import path from "node:path"
 import enChapters from "@/data/books/dont-develop/en/chapters.json"
 import charactersData from "@/data/books/dont-develop/characters.json"
 import chapter00Scenes from "@/bible/scenes/chapter-00-scenes.json"
@@ -104,20 +105,67 @@ export const BOOK_SLUG  = "dont-develop"
 export const BOOK_TITLE = "Don't Develop"
 
 /* ─── Language registry ───────────────────────────────────────────
-   Adding a language later is one import + one line here — no route
-   or page changes required.
+   Two storage shapes, one reader:
+   - RU: one Markdown file per chapter in ru/chapters/NN.md (frontmatter
+     num/title/time + blank-line-separated paragraphs). Hand-editable
+     file-by-file — edit + commit (e.g. from the GitHub mobile app) and
+     the push deploys. This is the source of truth for the RU manuscript.
+   - EN: a single en/chapters.json array (still being translated
+     chapter-by-chapter; will move to the same per-file shape once done).
+   Both resolve to Chapter[] sorted by `num`.
 ─────────────────────────────────────────────────────────────────── */
-const CHAPTERS_BY_LANG: Record<string, Chapter[]> = {
-  ru: ruChapters as Chapter[],
-  en: enChapters as Chapter[],
+const SUPPORTED_LANGS = ["ru", "en"] as const
+
+const RU_CHAPTERS_DIR = path.join(
+  process.cwd(),
+  "data/books/dont-develop/ru/chapters",
+)
+
+function parseChapterFile(raw: string): Chapter {
+  const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
+  if (!m) throw new Error("chapter file missing frontmatter")
+  const [, frontmatter, body] = m
+  const meta: Record<string, string> = {}
+  for (const line of frontmatter.split(/\r?\n/)) {
+    const mm = line.match(/^([A-Za-z_]+):\s*(.*)$/)
+    if (!mm) continue
+    let value = mm[2].trim()
+    if (
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
+      value = value.slice(1, -1)
+    }
+    meta[mm[1]] = value
+  }
+  return {
+    num:   Number(meta.num),
+    title: meta.title,
+    time:  meta.time,
+    body:  body.replace(/^\s+|\s+$/g, ""),
+  }
+}
+
+let ruChaptersCache: Chapter[] | null = null
+
+function loadRuChapters(): Chapter[] {
+  if (ruChaptersCache) return ruChaptersCache
+  ruChaptersCache = fs
+    .readdirSync(RU_CHAPTERS_DIR)
+    .filter((f) => f.endsWith(".md"))
+    .map((f) => parseChapterFile(fs.readFileSync(path.join(RU_CHAPTERS_DIR, f), "utf8")))
+    .sort((a, b) => a.num - b.num)
+  return ruChaptersCache
 }
 
 export function getSupportedLangs(): string[] {
-  return Object.keys(CHAPTERS_BY_LANG)
+  return [...SUPPORTED_LANGS]
 }
 
 export function getChapters(lang: string): Chapter[] | undefined {
-  return CHAPTERS_BY_LANG[lang]
+  if (lang === "ru") return loadRuChapters()
+  if (lang === "en") return enChapters as Chapter[]
+  return undefined
 }
 
 export function getChapter(lang: string, num: number): Chapter | undefined {

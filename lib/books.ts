@@ -236,7 +236,7 @@ export function getScenePlan(chapter: number): ScenePlan[] {
 export type ChapterVideo = { videoId: string; url: string }
 
 const CHAPTER_VIDEOS: Record<number, ChapterVideo> = {
-  0: { videoId: "xzpr_0D1clg", url: "https://youtu.be/xzpr_0D1clg" },
+  0: { videoId: "0Vba_rDiPJw", url: "https://youtu.be/0Vba_rDiPJw" },
 }
 
 export function getChapterVideo(chapter: number): ChapterVideo | undefined {

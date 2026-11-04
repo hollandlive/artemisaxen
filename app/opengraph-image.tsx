@@ -34,7 +34,7 @@ export default function OGImage() {
             margin:         0,
             fontFamily:     "system-ui, -apple-system, sans-serif",
           }}>
-            Athens · Greece
+            Next.js · TypeScript · Supabase
           </p>
 
           <h1 style={{
@@ -56,7 +56,7 @@ export default function OGImage() {
             fontFamily:  "system-ui, -apple-system, sans-serif",
             lineHeight:  1.4,
           }}>
-            Web Design &amp; Development
+            Full-Stack Developer
           </p>
         </div>
 

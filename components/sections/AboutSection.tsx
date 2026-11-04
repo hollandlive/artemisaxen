@@ -26,23 +26,26 @@ export default function AboutSection() {
                 className="font-serif italic text-charcoal leading-[1.05]"
                 style={{ fontSize: "var(--text-title)" }}
               >
-                I design and build things that work.
+                Crutches, and then wings.
               </h2>
             </FadeIn>
 
             <FadeIn direction="up" delay={0.14}>
               <p className="mt-7 text-[15px] text-body leading-[1.85]">
-                A designer and developer based in Athens. I work across the full
-                stack — from brand identity to Shopify custom themes, Next.js
-                platforms, and everything in between.
+                I started as a PHP and Drupal developer in Amsterdam agencies in
+                2014, after studying design and printing engineering. Live webcams
+                were a hobby — I could watch skylines for hours.
               </p>
             </FadeIn>
 
             <FadeIn direction="up" delay={0.20}>
               <p className="mt-4 text-[15px] text-body leading-[1.85]">
-                My clients are entrepreneurs and small businesses who want a
-                digital presence that reflects their quality. I work in close
-                collaboration: you bring the vision, I bring the execution.
+                In February 2026 I started turning that hobby into LiveCity.cam,
+                learning React and Next.js as I built it — first with ChatGPT, from
+                May with Claude Code. What would once have taken me months, or never
+                shipped at all, went live in weeks. A year later there are four
+                products in production, and I understand what sits underneath them:
+                load, cache, bots, cost and search.
               </p>
             </FadeIn>
 
@@ -50,7 +53,7 @@ export default function AboutSection() {
               <div className="mt-10 flex items-center gap-2.5">
                 <span className="w-2 h-2 rounded-full bg-[#22C55E] shrink-0" />
                 <span className="text-[12px] text-dim tracking-wide">
-                  Available for new projects
+                  Open to full-stack roles in the Netherlands · EU citizen
                 </span>
               </div>
             </FadeIn>

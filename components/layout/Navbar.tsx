@@ -7,19 +7,18 @@ import { DURATION, EASING } from "@/lib/motion"
 
 /* ─── Nav links ───────────────────────────────────────────────── */
 const links = [
-  { label: "Work",  href: "/#work"  },
-  { label: "About", href: "/#about" },
-  { label: "Books", href: "/books"  },
+  { label: "Work",       href: "/#work"       },
+  { label: "Notes",      href: "/#notes"      },
+  { label: "Experience", href: "/#experience" },
+  { label: "About",      href: "/#about"      },
+  { label: "Books",      href: "/books"       },
 ]
 
 /* ─── Threshold: navbar switches from dark to light mode.
-   Hero overlay fades between scrollYProgress 0.55–0.80 of a
-   250vh container. At 0.80 the overlay is fully gone:
-     scrollY = 0.80 × 250vh = 200vh = 2.0 × viewportHeight
-   We switch slightly before full completion (1.8×) so the
-   backdrop nav appears as the warm canvas is settling.
+   Hero overlay clears between scrollYProgress 0.25–0.55 of a
+   180vh container, i.e. by scrollY ≈ 1.0 × viewportHeight.
 ─────────────────────────────────────────────────────────────── */
-const DARK_THRESHOLD_VH = 1.8
+const DARK_THRESHOLD_VH = 0.95
 
 export default function Navbar() {
   const [scrolled,    setScrolled]    = useState(false)
@@ -96,7 +95,7 @@ export default function Navbar() {
                   : "text-surface border-b border-surface/40 hover:border-surface",
               ].join(" ")}
             >
-              Start a project →
+              Get in touch →
             </a>
           </nav>
 
@@ -191,7 +190,7 @@ export default function Navbar() {
                   delay: 0.15,
                 }}
               >
-                Start a project →
+                Get in touch →
               </m.a>
             </nav>
 

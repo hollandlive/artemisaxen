@@ -1,34 +1,35 @@
 "use client"
 
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { m, useScroll, useTransform, useReducedMotion } from "framer-motion"
+import { EASING } from "@/lib/motion"
 
-const YT_ID = "mkgiWK2GoOg"
-
-/* ─── YouTube background ─────────────────────────────────────────
-   Covers the sticky viewport regardless of aspect ratio.
-   pointerEvents none so scroll still works through it.
+/* ─── Video background ───────────────────────────────────────────
+   Self-hosted ping-pong loop (seamless), portrait cut on phones.
+   <source media> picks the file; the poster shows until it plays.
 ───────────────────────────────────────────────────────────────── */
-function YouTubeBackground() {
+function VideoBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden bg-ink" aria-hidden="true">
-      <iframe
-        src={`https://www.youtube-nocookie.com/embed/${YT_ID}?autoplay=1&mute=1&loop=1&playlist=${YT_ID}&controls=0&disablekb=1&fs=0&iv_load_policy=3&rel=0&modestbranding=1&playsinline=1`}
-        style={{
-          position:   "absolute",
-          top:        "50%",
-          left:       "50%",
-          width:      "177.78vh",  /* 16:9 at full height */
-          minWidth:   "100%",
-          height:     "100vh",
-          minHeight:  "56.25vw",   /* 16:9 at full width */
-          transform:  "translate(-50%, -50%)",
-          border:     "none",
-          pointerEvents: "none",
-        }}
-        allow="autoplay; encrypted-media"
-        title="Background video"
-      />
+      <picture>
+        <source media="(orientation: portrait)" srcSet="/hero/hero-portrait.jpg" />
+        <img
+          src="/hero/hero-landscape.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </picture>
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      >
+        <source media="(orientation: portrait)" src="/hero/hero-portrait.mp4" type="video/mp4" />
+        <source src="/hero/hero-landscape.mp4" type="video/mp4" />
+      </video>
     </div>
   )
 }
@@ -43,7 +44,7 @@ function HeroStatic() {
       aria-label="Hero"
     >
       <h1 className="sr-only">
-        Artemis Axen — Web Design &amp; Development, Athens
+        Artemis Axen — Full-Stack Developer, Next.js &amp; TypeScript
       </h1>
 
       <div className="text-center max-w-5xl w-full" aria-hidden="true">
@@ -51,13 +52,13 @@ function HeroStatic() {
           className="font-serif italic text-charcoal leading-[1.1] mb-4"
           style={{ fontSize: "var(--text-display)" }}
         >
-          Design is the argument.
+          I build products that scale.
         </p>
         <p
           className="font-serif italic text-body leading-[1.1]"
           style={{ fontSize: "var(--text-display)" }}
         >
-          Development is the proof.
+          And I know what they cost.
         </p>
         <p
           className="mt-10 font-serif text-muted tracking-tight"
@@ -65,7 +66,7 @@ function HeroStatic() {
         >
           <span className="opacity-40">— </span>
           Artemis Axen
-          <span className="opacity-40"> · Athens</span>
+          <span className="opacity-40"> · Full-Stack Developer</span>
         </p>
       </div>
     </section>
@@ -92,134 +93,93 @@ function ScrollIndicator() {
 }
 
 /* ─── Animated hero ──────────────────────────────────────────────
-   250vh outer container · 100dvh sticky shell.
-   YouTube video visible at 35% through the dark overlay.
+   180vh outer container · 100dvh sticky shell.
+   Headline is visible on load (staggered entrance), then fades and
+   lifts away over the first ~half viewport of scroll while the dark
+   overlay clears to canvas by ~1 viewport.
 ───────────────────────────────────────────────────────────────── */
+const ENTER = { duration: 1.0, ease: EASING.editorial }
+
 function HeroAnimated() {
   const containerRef = useRef<HTMLDivElement>(null)
 
-  const { scrollYProgress } = useScroll({
-    target:  containerRef,
-    offset:  ["start start", "end start"],
-  })
+  // Page scroll in px, mapped against the viewport height
+  const { scrollY } = useScroll()
+  const [vh, setVh] = useState(800)
+  useEffect(() => {
+    const update = () => setVh(window.innerHeight)
+    update()
+    window.addEventListener("resize", update)
+    return () => window.removeEventListener("resize", update)
+  }, [])
 
-  /* Overlay: starts at 0.65 so video is visible, fades out at 55–80% */
-  const overlayOpacity = useTransform(
-    scrollYProgress,
-    [0.55, 0.80],
-    [0.65, 0],
-  )
-
-  const indicatorOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.04, 0.10],
-    [1, 1, 0],
-  )
-
-  const line1Opacity = useTransform(
-    scrollYProgress,
-    [0, 0.08, 0.22, 0.30],
-    [0, 1,    1,    0],
-  )
-  const line1Y = useTransform(scrollYProgress, [0, 0.08], [28, 0])
-
-  const line2Opacity = useTransform(
-    scrollYProgress,
-    [0.26, 0.34, 0.48, 0.56],
-    [0,    1,    1,    0],
-  )
-  const line2Y = useTransform(scrollYProgress, [0.26, 0.34], [28, 0])
-
-  const nameOpacity = useTransform(scrollYProgress, [0.52, 0.64], [0, 1])
-  const nameY       = useTransform(scrollYProgress, [0.52, 0.64], [18, 0])
-
-  const nameColor = useTransform(
-    scrollYProgress,
-    [0.55, 0.85],
-    ["rgba(250,250,248,0.65)", "rgba(107,105,99,0.90)"],
-  )
+  const contentOpacity   = useTransform(scrollY, [0, vh * 0.55], [1, 0])
+  const contentY         = useTransform(scrollY, [0, vh * 0.55], [0, -70])
+  const overlayOpacity   = useTransform(scrollY, [vh * 0.45, vh * 0.95], [0.6, 0])
+  const indicatorOpacity = useTransform(scrollY, [0, vh * 0.12], [1, 0])
 
   const handleScrollToWork = () => {
-    document.getElementById("thoughts")?.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("proof")?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
     <section
       ref={containerRef}
-      className="relative h-[250vh]"
+      className="relative h-[180vh]"
       aria-label="Hero"
     >
       <h1 className="sr-only">
-        Artemis Axen — Web Design &amp; Development, Athens
+        Artemis Axen — Full-Stack Developer, Next.js &amp; TypeScript
       </h1>
 
       {/* ── Sticky viewport shell ─────────────────────────────── */}
       <div className="sticky top-0 h-[100dvh] bg-canvas overflow-hidden">
 
-        {/* Cinematic video background */}
-        <YouTubeBackground />
+        <VideoBackground />
 
-        {/* Dark overlay — fades as canvas settles */}
+        {/* Dark overlay — clears as canvas settles */}
         <m.div
           className="absolute inset-0 bg-ink z-0"
           style={{ opacity: overlayOpacity }}
           aria-hidden="true"
         />
 
-        {/* ── Line 1 ──────────────────────────────────────────── */}
-        <div
+        {/* ── Headline ────────────────────────────────────────── */}
+        <m.div
           className="absolute inset-0 z-10 flex items-center justify-center px-6 pointer-events-none"
+          style={{ opacity: contentOpacity, y: contentY }}
           aria-hidden="true"
         >
-          <m.p
-            className="font-serif italic text-surface text-center w-full max-w-5xl leading-[1.1]"
-            style={{
-              fontSize: "var(--text-display)",
-              opacity:  line1Opacity,
-              y:        line1Y,
-            }}
-          >
-            Design is the argument.
-          </m.p>
-        </div>
-
-        {/* ── Line 2 ──────────────────────────────────────────── */}
-        <div
-          className="absolute inset-0 z-10 flex items-center justify-center px-6 pointer-events-none"
-          aria-hidden="true"
-        >
-          <m.p
-            className="font-serif italic text-surface text-center w-full max-w-5xl leading-[1.1]"
-            style={{
-              fontSize: "var(--text-display)",
-              opacity:  line2Opacity,
-              y:        line2Y,
-            }}
-          >
-            Development is the proof.
-          </m.p>
-        </div>
-
-        {/* ── Name + location ─────────────────────────────────── */}
-        <div
-          className="absolute inset-0 z-10 flex items-center justify-center px-6 pointer-events-none"
-          aria-hidden="true"
-        >
-          <m.div
-            className="text-center"
-            style={{ opacity: nameOpacity, y: nameY }}
-          >
+          <div className="text-center w-full max-w-5xl">
             <m.p
-              className="font-serif tracking-tight"
-              style={{
-                fontSize: "clamp(1.125rem, 2.5vw, 1.5rem)",
-                color:    nameColor,
-              }}
+              className="font-serif italic text-surface leading-[1.05]"
+              style={{ fontSize: "var(--text-display)", textShadow: "0 2px 24px rgba(0,0,0,0.45)" }}
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ ...ENTER, delay: 0.2 }}
             >
-              — Artemis Axen · Athens
+              I build products that scale.
             </m.p>
-          </m.div>
-        </div>
+            <m.p
+              className="font-serif italic leading-[1.05] mt-2"
+              style={{ fontSize: "var(--text-display)", color: "rgba(250,250,248,0.78)", textShadow: "0 2px 24px rgba(0,0,0,0.45)" }}
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ ...ENTER, delay: 0.75 }}
+            >
+              And I know what they cost.
+            </m.p>
+            <m.p
+              className="mt-10 text-[12px] sm:text-[13px] uppercase tracking-[0.18em]"
+              style={{ color: "rgba(250,250,248,0.70)" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ ...ENTER, delay: 1.35 }}
+            >
+              Artemis Axen · Full-Stack Developer · Next.js · TypeScript · Supabase
+            </m.p>
+          </div>
+        </m.div>
 
         {/* ── Scroll indicator (clickable) ────────────────────── */}
         <m.button

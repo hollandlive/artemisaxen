@@ -1,11 +1,14 @@
-import Navbar          from "@/components/layout/Navbar"
-import Footer          from "@/components/layout/Footer"
-import FadeIn          from "@/components/ui/FadeIn"
-import HeroSection     from "@/components/sections/HeroSection"
-import InsightsSection from "@/components/sections/InsightsSection"
-import WorkSection     from "@/components/sections/WorkSection"
-import AboutSection    from "@/components/sections/AboutSection"
-import ContactSection  from "@/components/sections/ContactSection"
+import Navbar            from "@/components/layout/Navbar"
+import Footer            from "@/components/layout/Footer"
+import FadeIn            from "@/components/ui/FadeIn"
+import HeroSection       from "@/components/sections/HeroSection"
+import ProofSection      from "@/components/sections/ProofSection"
+import NotesSection      from "@/components/sections/NotesSection"
+import ExperienceSection from "@/components/sections/ExperienceSection"
+import StackSection      from "@/components/sections/StackSection"
+import WorkSection       from "@/components/sections/WorkSection"
+import AboutSection      from "@/components/sections/AboutSection"
+import ContactSection    from "@/components/sections/ContactSection"
 
 export default function Home() {
   return (
@@ -25,15 +28,19 @@ export default function Home() {
       <main id="main">
         <HeroSection />
 
-        <FadeIn direction="up" amount={0.05}>
-          <InsightsSection />
-        </FadeIn>
+        <ProofSection />
 
         <FadeIn direction="up" amount={0.05}>
           <div id="work">
             <WorkSection />
           </div>
         </FadeIn>
+
+        <NotesSection />
+
+        <ExperienceSection />
+
+        <StackSection />
 
         <FadeIn direction="up" amount={0.05}>
           <AboutSection />

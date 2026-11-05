@@ -67,6 +67,7 @@ export const projects: Project[] = [
       "Disabled unthrottled Link prefetch and extended revalidation — daily Vercel usage down ~35%.",
       "Blocked a scraper responsible for 71% of requests at the Vercel firewall after it exhausted the database IO budget.",
       "Python batch pipeline: YouTube Data API checks for duplicates, live status and embeddability, preflight before insert, translation-completeness verification across 13 locales.",
+      "Postmortem — a cache stampede we caused: purging the catalogue tag twice in one day made every page refetch 1,500+ heavy rows at once. ~169k requests stalled the database, and functions waiting up to 300 s billed ~6× a normal day in provisioned memory. Fixes in rollout: a lean catalogue rebuilt with one fetch (heavy fields load per page), a ~10 s database timeout to fail fast, at most one purge a day, and batched, tested deploys.",
     ],
     outcome:
       "Grew from ~190 to ~1,600 cameras in two months through a semi-automated pipeline. Approved for Google AdSense; organic traffic growing month over month.",

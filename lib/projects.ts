@@ -53,10 +53,10 @@ export const projects: Project[] = [
       "Vercel ISR", "YouTube Data API", "Python batch pipeline", "Leaflet + CARTO maps",
     ],
     metrics: [
-      { value: "1,574", label: "live cameras" },
+      { value: "1,500+", label: "live cameras" },
       { value: "13",    label: "locales incl. RTL" },
-      { value: "30k+",  label: "indexable URLs" },
-      { value: "+55%",  label: "Google clicks, 28-day period" },
+      { value: "30k+",  label: "localised pages" },
+      { value: "+78%",  label: "Google clicks, 28-day period" },
     ],
     problem:
       "Serve ~30,000 localised pages from a small Postgres instance and a Vercel budget — while streams go offline every few days and crawlers hammer the site.",
@@ -67,10 +67,15 @@ export const projects: Project[] = [
       "Disabled unthrottled Link prefetch and extended revalidation — daily Vercel usage down ~35%.",
       "Blocked a scraper responsible for 71% of requests at the Vercel firewall after it exhausted the database IO budget.",
       "Python batch pipeline: YouTube Data API checks for duplicates, live status and embeddability, preflight before insert, translation-completeness verification across 13 locales.",
-      "Postmortem — a cache stampede we caused: purging the catalogue tag twice in one day made every page refetch 1,500+ heavy rows at once. ~169k requests stalled the database, and functions waiting up to 300 s billed ~6× a normal day in provisioned memory. Fixes in rollout: a lean catalogue rebuilt with one fetch (heavy fields load per page), a ~10 s database timeout to fail fast, at most one purge a day, and batched, tested deploys.",
+      "Found pages that had revalidate but no generateStaticParams — /country, /live-webcams, /blog, blog posts and multi-screen ran a function on every view instead of being cached. Fixed; production now returns x-vercel-cache: HIT.",
+      "Automatic failover: when the YouTube player reports a stream as gone, the tile switches to a backup camera in the same time zone, so a dead stream needs no deploy. Tested locally against a real dead stream.",
+      "Search driven by data, not guesses: hand-written titles for low-CTR pages chosen from real Search Console queries (one city page went from 8.3% to 23.5% CTR), and noindex on ~15k thin single-camera area pages to focus crawl budget on strong ones.",
+      "Stream health check across 1,620 YouTube streams: 86 dead streams swapped to their new live IDs (37 cameras back online after weeks offline), 25 with no live source taken offline.",
+      "Shipped in one week: reusable event hubs (New Year's Eve with 37 cities in midnight order, Christmas markets), a random-camera page with swipe and a full-screen Reels mode on phones, and hand-written city guides in 13 languages.",
+      "Postmortem — a cache stampede we caused: purging the catalogue tag twice in one day made every page refetch 1,500+ heavy rows at once. ~169k requests stalled the database, and functions waiting up to 300 s billed ~6× a normal day in provisioned memory. Fixes shipped: a lean catalogue rebuilt with one fetch (heavy fields load per page), a ~10 s database timeout to fail fast, at most one purge a day, batched, tested deploys — and functions moved from Washington to Frankfurt, next to the database, so queries no longer cross the Atlantic. The fix passed its first real purge: sampled pages answered in 0.15–0.7 s with no errors in the logs.",
     ],
     outcome:
-      "Grew from ~190 to ~1,600 cameras in two months through a semi-automated pipeline. Approved for Google AdSense; organic traffic growing month over month.",
+      "Grew from ~190 to 1,500+ cameras in two months through a semi-automated pipeline. Approved for Google AdSense; organic traffic growing month over month.",
     shots: {
       desktop: { src: "/work/livecity/desktop.jpg", alt: "LiveCity.cam homepage with live camera discovery" },
       mobile: [

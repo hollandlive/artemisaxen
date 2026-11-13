@@ -20,9 +20,9 @@ const NOTES = [
     body:  "At ~600 cameras the cached catalogue crossed the 2 MB data-cache entry limit and production quietly rendered an empty list. Reads are now chunked at 200 rows per cache entry.",
   },
   {
-    tag:   "Performance",
-    title: "A homepage 3.6× lighter",
-    body:  "1,600 camera records were serialised into the RSC payload of every homepage view. Moved to a CDN-cached API loaded on demand; the page is now static per locale. 219 KB → 61 KB gzipped.",
+    tag:   "Handoff",
+    title: "The store that couldn't be handed over",
+    body:  "I built a client's Shopify store as a Development store. At handoff it turned out that type can't be transferred, can't take a paid plan and can't drop its password. In one session I moved everything to a store the client owns: theme via CLI, products via CSV, Greek translations re-mapped by a script, domain switched without touching DNS. Every client store now starts as a Client transfer store.",
   },
   {
     tag:   "SEO",

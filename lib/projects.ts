@@ -201,6 +201,7 @@ export const projects: Project[] = [
       "All hardcoded theme strings moved to locale keys; Greek content bulk-updated through a CSV export → merge → import pipeline.",
       "Researched the Greek IRIS payment mandate: found the bank's gateway had no Shopify integration and proposed a working provider combination.",
       "Git-versioned theme with diff-before-push to live and theme-check.",
+      "Handoff lesson: I built the store as a Shopify Development store, and that type can't be transferred to a client. In one working session I moved it to a store the client owns. The theme went over via CLI and 15 products via CSV. Collections, menus, markets and shipping were rebuilt. Translation CSVs are keyed by store-specific IDs, so a small Python script re-mapped 100 Greek strings by matching their English source text. The domain moved with no DNS changes. It's now a written playbook: a Client transfer store from day one, English as the default language, and ownership transferred only after full payment.",
     ],
     outcome:
       "A complete store ready to open as soon as payments are connected.",

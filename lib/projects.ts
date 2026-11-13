@@ -141,6 +141,7 @@ export const projects: Project[] = [
     stack: [
       "Next.js 16", "Server Components", "Server Actions", "TypeScript",
       "Tailwind", "shadcn/ui", "next-intl", "Supabase RPC", "Vercel Cron",
+      "Claude Code routines",
     ],
     metrics: [
       { value: "~60",     label: "guides & comparisons" },
@@ -157,6 +158,8 @@ export const projects: Project[] = [
       "Fully static: typed TypeScript content modules rendered by shared templates, no CMS, JS only in small islands.",
       "Twice-daily Vercel Cron heartbeat keeps the free database from auto-pausing.",
       "Intro video cut from 42 MB to 3.4 MB with faststart; images 100–300 KB.",
+      "Directory link checker: a plain script checks every organisation in the directory and reports dead links. A 403 counts as bot protection, not a broken link.",
+      "Scheduled AI agent for legal accuracy: a Claude Code routine runs twice a week. It runs the link check and scans for changes in Dutch family law, with two independent sources for every fact. It is read-only and only leaves a draft report for human review. It never edits or publishes.",
     ],
     outcome:
       "A credible, fast MVP that validates demand before taking on the responsibility of storing sensitive data.",

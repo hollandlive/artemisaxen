@@ -19,7 +19,7 @@ _Составлен 2026-11-15. Источник: код репо, git log, `bib
   - **LiveCity.cam** — Live (livecity.cam); недавно добавлены postmortem cache-stampede и ноябрьские ops-работы.
   - **TravelHub.cam** — Live (travelhub.cam).
   - **FamilyFound** — Live MVP (familyfound.io); добавлены directory link checker и law-watch agent.
-  - **Sokole** — Shopify-магазин, «Launching soon» (ждёт подключения платежей; исследован греческий IRIS).
+  - **Sokole** — Shopify-магазин, **Live** с 19.11.2026 (sokole.eu, EN + /el), передан клиенту; скриншоты пока старые (до переезда).
 - Инженерные заметки: `components/sections/NotesSection.tsx` (массив карточек tag/title/body).
 - Контактная форма: `app/api/contact/route.ts` → Resend.
 - Env (значения в `.env.local`, не коммитить): `RESEND_API_KEY`, `RESEND_EMAIL_DOMAIN`, `CONTACT_TO_EMAIL`, `BLOB_READ_WRITE_TOKEN`, `NEXT_PUBLIC_GA_ID`, `VERCEL_OIDC_TOKEN`.
@@ -86,7 +86,7 @@ _Составлен 2026-11-15. Источник: код репо, git log, `bib
 2. Решить, какая копия текста главная (сайт или `~/Books/dont-develop/manuscript`), и синхронизировать.
 3. Физическое описание Майкла (спека «184 см…») — найти файл.
 4. Сцены для гл. 2+; видео для глав после пролога.
-5. Sokole — подключить платежи и запустить.
+5. ~~Sokole — запустить~~ (запущен 19.11, карточка обновлена). Опционально: свежие скриншоты с живого sokole.eu.
 6. Почистить прототипы в `public/*.html`.
 
 ## 5. Правила работы

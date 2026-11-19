@@ -175,9 +175,10 @@ export const projects: Project[] = [
     id:       "sokole",
     name:     "Sokole",
     category: "Shopify e-commerce",
-    status:   "Launching soon",
+    status:   "Live",
     period:   "2026",
-    urlLabel: "sokole.eu · launching soon",
+    url:      "https://sokole.eu",
+    urlLabel: "sokole.eu",
     accent:   "#9A7B2F",
     tint:     "linear-gradient(135deg, #F5EFE6 0%, #EDE3D3 100%)",
     summary:
@@ -202,9 +203,10 @@ export const projects: Project[] = [
       "Researched the Greek IRIS payment mandate: found the bank's gateway had no Shopify integration and proposed a working provider combination.",
       "Git-versioned theme with diff-before-push to live and theme-check.",
       "Handoff lesson: I built the store as a Shopify Development store, and that type can't be transferred to a client. In one working session I moved it to a store the client owns. The theme went over via CLI and 15 products via CSV. Collections, menus, markets and shipping were rebuilt. Translation CSVs are keyed by store-specific IDs, so a small Python script re-mapped 100 Greek strings by matching their English source text. The domain moved with no DNS changes. It's now a written playbook: a Client transfer store from day one, English as the default language, and ownership transferred only after full payment.",
+      "Launch-day fixes: the catalog showed a placeholder T-shirt instead of the gift card and the footer \"Gift Cards\" link returned 404, because the product handle changed during the move to the client's store. I restored the gift-card handle and added a redirect from the old one. The newsletter heading read as if a fragrance were out of stock, so I rewrote it with the client in English and Greek.",
     ],
     outcome:
-      "A complete store ready to open as soon as payments are connected.",
+      "Launched in November 2026 at sokole.eu in English and Greek and handed over to the client, who now runs the store.",
     shots: {
       desktop: { src: "/work/sokole/desktop.jpg", alt: "Sokole storefront hero, English version" },
       mobile: [

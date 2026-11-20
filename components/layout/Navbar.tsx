@@ -8,6 +8,7 @@ import { DURATION, EASING } from "@/lib/motion"
 /* ─── Nav links ───────────────────────────────────────────────── */
 const links = [
   { label: "Work",       href: "/#work"       },
+  { label: "Services",   href: "/#services"   },
   { label: "Notes",      href: "/#notes"      },
   { label: "Experience", href: "/#experience" },
   { label: "About",      href: "/#about"      },

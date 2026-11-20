@@ -53,7 +53,7 @@ export default function AboutSection() {
               <div className="mt-10 flex items-center gap-2.5">
                 <span className="w-2 h-2 rounded-full bg-[#22C55E] shrink-0" />
                 <span className="text-[12px] text-dim tracking-wide">
-                  Open to full-stack roles in the Netherlands · EU citizen
+                  Available for freelance projects · Shopify &amp; Next.js · EU citizen, remote
                 </span>
               </div>
             </FadeIn>

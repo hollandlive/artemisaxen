@@ -10,7 +10,7 @@ export default function WorkSection() {
         <div className="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
           <SectionLabel className="mb-0">Selected Work</SectionLabel>
           <span className="hidden sm:block text-[11px] uppercase tracking-[0.12em] text-muted">
-            Four products · built and shipped in 2026
+            Five projects · built and shipped in 2026
           </span>
         </div>
       </div>

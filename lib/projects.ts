@@ -1,4 +1,4 @@
-export type ProjectStatus = "Live" | "Live MVP" | "Launching soon"
+export type ProjectStatus = "Live" | "Live MVP" | "Launching soon" | "Published"
 
 export type Metric = {
   value: string
@@ -19,6 +19,7 @@ export type Project = {
   url?:        string   // omitted while a project is not publicly reachable
   urlLabel:    string
   codeUrl?:    string
+  links?:      { href: string; label: string }[]   // extra links shown next to the main one
   accent:      string   // brand colour used for labels and frames
   tint:        string   // soft section background
   summary:     string
@@ -212,6 +213,49 @@ export const projects: Project[] = [
       mobile: [
         { src: "/work/sokole/mobile-1.jpg", alt: "Sokole mobile header and hero" },
         { src: "/work/sokole/mobile-2.jpg", alt: "Sokole philosophy section and signature fragrances" },
+      ],
+    },
+  },
+  {
+    id:       "dont-develop",
+    name:     "Don't Develop",
+    category: "Visual storytelling · AI video",
+    status:   "Published",
+    period:   "2026",
+    url:      "https://youtu.be/0Vba_rDiPJw",
+    urlLabel: "Watch the Prologue on YouTube",
+    links:    [{ href: "/books/dont-develop", label: "Read the novel" }],
+    accent:   "#B23A3A",
+    tint:     "linear-gradient(135deg, #F1EEEC 0%, #E6E1DE 100%)",
+    summary:
+      "A noir techno-thriller I write and publish on this site, in Russian and English. I also turn it into cinematic video: the full-length Prologue episode on YouTube is made entirely by me — script, images, voices, captions and edit.",
+    stack: [
+      "Stable Diffusion XL", "Draw Things", "Neural TTS", "ffmpeg",
+      "Python", "Next.js 16", "Vercel Blob", "Claude Code",
+    ],
+    metrics: [
+      { value: "47", label: "chapters written" },
+      { value: "2",  label: "languages RU / EN" },
+      { value: "51", label: "visual beats in the Prologue" },
+      { value: "1",  label: "full-length episode on YouTube" },
+    ],
+    problem:
+      "Turning a novel into video on a zero budget, while keeping the same faces, the same night-time London and readable on-screen text from shot to shot.",
+    decisions: [
+      "Script to beats: the Prologue is split into 51 visual beats and 92 spoken lines in one JSON file. Each beat names the speaker, the voice and the image.",
+      "A visual canon: a style bible (photoreal noir, teal and amber, night, rain) and reference images for every character. A generated shot is rejected if a face drifts from the reference or a night scene comes out in daylight.",
+      "Images generated locally with Stable Diffusion XL in Draw Things, with no subscription. Renders run one at a time, because parallel requests piled up behind slow ones and timed out.",
+      "A separate neural voice for each character. The AI assistant Clara deliberately gets a non-British voice, so she sounds out of place even with the sound off.",
+      "Captions are timed from the generated audio clips themselves, so no speech recognition is needed. On-screen text is added as an overlay, never drawn by the image model, which garbles it.",
+      "The reading site is a Next.js app with chapters from Markdown and JSON, scene images on Vercel Blob and a video link for each chapter.",
+    ],
+    outcome:
+      "A full-length Prologue episode on YouTube and a pipeline that works for any chapter. It's the same skill set I bring to stores: product imagery, hero videos and launch visuals.",
+    shots: {
+      desktop: { src: "/work/dont-develop/desktop.jpg", alt: "Don't Develop Prologue video thumbnail" },
+      mobile: [
+        { src: "/work/dont-develop/mobile-1.jpg", alt: "Don't Develop English book cover" },
+        { src: "/work/dont-develop/mobile-2.jpg", alt: "Не проявляй Russian book cover" },
       ],
     },
   },

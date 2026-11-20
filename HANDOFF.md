@@ -14,7 +14,8 @@ _Составлен 2026-11-15. Источник: код репо, git log, `bib
 
 ## 2. Портфолио
 
-- Главная: `app/page.tsx` → секции в `components/sections/` (Hero, Proof, Work, Notes, Experience, Stack, About, Contact).
+- Главная: `app/page.tsx` → секции в `components/sections/` (Hero, Proof, Work, **Services**, Notes, Experience, Stack, About, Contact).
+- **Позиционирование с 20.11.2026: только фриланс** (Shopify + Next.js), не поиск работы в NL. Тексты: Hero, About, Contact, Experience, `lib/metadata.ts`, `opengraph-image.tsx`.
 - Кейсы проектов: `lib/projects.ts` (рендер — `components/work/CaseStudy.tsx`, `DeviceShowcase.tsx`; скриншоты в `public/work/<slug>/`):
   - **LiveCity.cam** — Live (livecity.cam); недавно добавлены postmortem cache-stampede и ноябрьские ops-работы.
   - **TravelHub.cam** — Live (travelhub.cam).
@@ -77,7 +78,31 @@ _Составлен 2026-11-15. Источник: код репо, git log, `bib
 - Seedance/Flow AI кредиты закончились. Кандидаты пролога: годится только `495C3C29…` как insert.
 - Пайплайн YouTube (pilot) — нерешённые вопросы из REPORT.md: консистентность лиц, кропы низкого разрешения (~262px), edge-tts vs ElevenLabs, ffmpeg без libass.
 
-## 4. Где остановились (сессия 2026-11-15)
+## 4. Фриланс — план (20.11.2026)
+Цель: фриланс-заказы на Shopify и Next.js по портфолио. Оплата — **за проект** (fixed price). Shopify и Next.js оба интересны, **приоритет — попробовать Shopify Partner**.
+Личные детали (статус регистрации, где сейчас живёт) — в приватной памяти Claude, **не в этом репо: он публичный**.
+
+Сделано на сайте:
+- Секция услуг `components/sections/ServicesSection.tsx` (ссылка «Services» в навбаре): Shopify под ключ · Shopify fixes & migrations · Next.js sites & MVPs · Product visuals & video. Цены не указаны.
+- 5-й проект в `lib/projects.ts`: **Don't Develop** (AI-видео, полный пролог на YouTube `0Vba_rDiPJw`, сделан самим автором) — после Sokole. Картинки в `public/work/dont-develop/` (превью YouTube + обложки EN/RU). Новый статус `Published`, поле `links` (доп. ссылки в карточке).
+
+Каналы поиска (по порядку):
+1. **Shopify Partner Program** → Partner Directory (условия входа проверить; Sokole — запущенный магазин клиента).
+2. Storetasker (биржа только под Shopify, с отбором).
+3. Upwork, Contra, Malt; LinkedIn с пометкой «Open to freelance».
+4. Прямой поиск клиентов: нишевые бренды GR/EU на WooCommerce или старом Shopify (второй язык, переезд); русскоязычный бизнес в ЕС; агентства на субподряд (Shopify/Next.js).
+
+Shopify Partners — что выяснили (20.11):
+- Партнёрский аккаунт уже есть (Dev Dashboard, через него collaborator-доступ к Sokole). Регистрироваться заново не нужно.
+- Partner Directory — **только по приглашению**; уровни считаются по привязанным (attributed) магазинам и их GMV. По сторонним гайдам, с 01.01.2027 Silver ≈ $25K GMV + 1 магазин — не подтверждено у Shopify.
+- Sokole клиент создал сам → скорее всего **не привязан** к партнёрскому аккаунту (проверить в Dashboard: Stores / Referrals; если нет — спросить Partner Support про привязку задним числом).
+- Дальше: заполнить профиль партнёра (сайт, страна, налоги); новых клиентов — строго Client transfer store из своего аккаунта; Shopify Academy / Verified Skills для значка. Каталог — долгая цель, заказы пока через Storetasker, Upwork/Contra, прямые письма, субподряд.
+
+Сильные стороны для питчей: многоязычные магазины (Translate & Adapt), греческие платежи IRIS, перенос Dev store → магазин клиента (playbook), цифры из кейсов, AI-визуалы и видео.
+
+Открыто: пакеты и цены; свежие скриншоты sokole.eu; профили на площадках; список 20–30 компаний для прямых писем + шаблоны писем.
+
+## 5. Где остановились (сессия 2026-11-15)
 - Создан этот HANDOFF; исправлена дата стирания (апрель → октябрь) в RU и EN на сайте; закоммичено и запушено в `main`.
 - Отправлена справка о портфолио соседней сессии `LC_FF_SMM` (SMM для LiveCity/FamilyFound). Instagram LiveCity в репо не найден.
 
@@ -89,7 +114,7 @@ _Составлен 2026-11-15. Источник: код репо, git log, `bib
 5. ~~Sokole — запустить~~ (запущен 19.11, карточка обновлена). Опционально: свежие скриншоты с живого sokole.eu.
 6. Почистить прототипы в `public/*.html`.
 
-## 5. Правила работы
+## 6. Правила работы
 - Коммит/пуш только по просьбе. Пуш в `main` = деплой.
 - Сюжет сверять с каноном; новые идеи сами по себе не повод менять Truth Bible.
 - Секреты из `.env.local` не выводить.

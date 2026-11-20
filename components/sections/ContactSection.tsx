@@ -29,7 +29,7 @@ export default function ContactSection() {
 
         <FadeIn direction="up" delay={0.14}>
           <p className="mt-5 text-[14px] leading-relaxed" style={{ color: "#7B6B99" }}>
-            Hiring for a full-stack role? Send a message — I reply within 24 hours.
+            Have a Shopify store or a Next.js project in mind? Send a short brief — I reply within 24 hours with questions or a fixed-price quote.
           </p>
         </FadeIn>
 

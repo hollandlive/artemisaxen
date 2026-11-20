@@ -71,6 +71,16 @@ export default function CaseStudy({ project: p, index }: Props) {
                 ) : (
                   <span className="text-dim">{p.urlLabel}</span>
                 )}
+                {p.links?.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    className="transition-opacity hover:opacity-60"
+                    style={{ color: p.accent, borderBottom: `1px solid ${p.accent}59`, paddingBottom: 1 }}
+                  >
+                    {l.label} →
+                  </a>
+                ))}
                 {p.codeUrl && (
                   <a
                     href={p.codeUrl}

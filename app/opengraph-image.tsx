@@ -56,7 +56,7 @@ export default function OGImage() {
             fontFamily:  "system-ui, -apple-system, sans-serif",
             lineHeight:  1.4,
           }}>
-            Full-Stack Developer
+            Freelance Shopify &amp; Next.js Developer
           </p>
         </div>
 

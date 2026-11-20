@@ -95,9 +95,10 @@ _Составлен 2026-11-15. Источник: код репо, git log, `bib
 Shopify Partners — проверено в Dashboard (20.11):
 - Партнёрский аккаунт уже есть (Dev Dashboard → Organization settings → Partner program). Уровень: **Registered**, Partner Directory — «Not eligible».
 - Официальная таблица уровней (в Dashboard, «View tiers»): **Silver = $25K eligible sales + 1 attributed merchant за 365 дней** → листинг в Directory и бейдж. Gold — $5M + 5 мерчантов за 4 года.
-- Sokole в Stores — тип **Collaboration** → к партнёрскому аккаунту **не привязан**, в зачёт не идёт. Вопрос в Partner Support о привязке задним числом — черновик готов, отправка после подтверждения автора.
+- Sokole в Stores — тип **Collaboration** → к партнёрскому аккаунту **не привязан**, в зачёт не идёт. Partner Support (чат в help.shopify.com, 20.11) ответил: **задним числом привязать нельзя** — collaborator-доступ не превращается в transfer. Засчитываются только магазины, созданные как Client transfer store и переданные клиенту (клиент активирует тариф после принятия передачи). Пересоздавать Sokole не имеет смысла.
 - Профиль организации: сайт artemisaxen.com добавлен (20.11). Business entity — **не добавлять**, пока не решён вопрос регистрации.
 - **Правило для новых клиентов:** магазин создавать только через «Create client store» (Partner program) / Client transfer store из своего аккаунта, потом передавать клиенту — так он привязывается к тебе. Без этого Silver не набрать.
+- Быстрее всего к $25K: клиент, у которого **уже есть продажи** (переезд с WooCommerce/другой платформы) — его оборот сразу идёт в зачёт. Новый бренд с нуля набирает $25K долго.
 - Каталог — долгая цель; заказы пока через Storetasker, Upwork/Contra, прямые письма, субподряд. Shopify Academy / Verified Skills — для значка.
 
 Сильные стороны для питчей: многоязычные магазины (Translate & Adapt), греческие платежи IRIS, перенос Dev store → магазин клиента (playbook), цифры из кейсов, AI-визуалы и видео.

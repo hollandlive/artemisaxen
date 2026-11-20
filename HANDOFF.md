@@ -92,11 +92,13 @@ _Составлен 2026-11-15. Источник: код репо, git log, `bib
 3. Upwork, Contra, Malt; LinkedIn с пометкой «Open to freelance».
 4. Прямой поиск клиентов: нишевые бренды GR/EU на WooCommerce или старом Shopify (второй язык, переезд); русскоязычный бизнес в ЕС; агентства на субподряд (Shopify/Next.js).
 
-Shopify Partners — что выяснили (20.11):
-- Партнёрский аккаунт уже есть (Dev Dashboard, через него collaborator-доступ к Sokole). Регистрироваться заново не нужно.
-- Partner Directory — **только по приглашению**; уровни считаются по привязанным (attributed) магазинам и их GMV. По сторонним гайдам, с 01.01.2027 Silver ≈ $25K GMV + 1 магазин — не подтверждено у Shopify.
-- Sokole клиент создал сам → скорее всего **не привязан** к партнёрскому аккаунту (проверить в Dashboard: Stores / Referrals; если нет — спросить Partner Support про привязку задним числом).
-- Дальше: заполнить профиль партнёра (сайт, страна, налоги); новых клиентов — строго Client transfer store из своего аккаунта; Shopify Academy / Verified Skills для значка. Каталог — долгая цель, заказы пока через Storetasker, Upwork/Contra, прямые письма, субподряд.
+Shopify Partners — проверено в Dashboard (20.11):
+- Партнёрский аккаунт уже есть (Dev Dashboard → Organization settings → Partner program). Уровень: **Registered**, Partner Directory — «Not eligible».
+- Официальная таблица уровней (в Dashboard, «View tiers»): **Silver = $25K eligible sales + 1 attributed merchant за 365 дней** → листинг в Directory и бейдж. Gold — $5M + 5 мерчантов за 4 года.
+- Sokole в Stores — тип **Collaboration** → к партнёрскому аккаунту **не привязан**, в зачёт не идёт. Вопрос в Partner Support о привязке задним числом — черновик готов, отправка после подтверждения автора.
+- Профиль организации: сайт artemisaxen.com добавлен (20.11). Business entity — **не добавлять**, пока не решён вопрос регистрации.
+- **Правило для новых клиентов:** магазин создавать только через «Create client store» (Partner program) / Client transfer store из своего аккаунта, потом передавать клиенту — так он привязывается к тебе. Без этого Silver не набрать.
+- Каталог — долгая цель; заказы пока через Storetasker, Upwork/Contra, прямые письма, субподряд. Shopify Academy / Verified Skills — для значка.
 
 Сильные стороны для питчей: многоязычные магазины (Translate & Adapt), греческие платежи IRIS, перенос Dev store → магазин клиента (playbook), цифры из кейсов, AI-визуалы и видео.
 

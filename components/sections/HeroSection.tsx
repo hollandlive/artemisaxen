@@ -44,7 +44,7 @@ function HeroStatic() {
       aria-label="Hero"
     >
       <h1 className="sr-only">
-        Artemis Axen — Freelance Shopify &amp; Next.js Developer
+        Artemis Axen — Full-Stack Developer · Next.js · Shopify
       </h1>
 
       <div className="text-center max-w-5xl w-full" aria-hidden="true">
@@ -66,7 +66,7 @@ function HeroStatic() {
         >
           <span className="opacity-40">— </span>
           Artemis Axen
-          <span className="opacity-40"> · Freelance Shopify &amp; Next.js Developer</span>
+          <span className="opacity-40"> · Full-Stack Developer · Next.js · Shopify</span>
         </p>
       </div>
     </section>
@@ -129,7 +129,7 @@ function HeroAnimated() {
       aria-label="Hero"
     >
       <h1 className="sr-only">
-        Artemis Axen — Freelance Shopify &amp; Next.js Developer
+        Artemis Axen — Full-Stack Developer · Next.js · Shopify
       </h1>
 
       {/* ── Sticky viewport shell ─────────────────────────────── */}
@@ -176,7 +176,7 @@ function HeroAnimated() {
               animate={{ opacity: 1 }}
               transition={{ ...ENTER, delay: 1.35 }}
             >
-              Artemis Axen · Freelance Developer · Shopify · Next.js
+              Artemis Axen · Full-Stack Developer · Next.js · Shopify
             </m.p>
           </div>
         </m.div>

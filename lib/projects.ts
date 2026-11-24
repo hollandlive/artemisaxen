@@ -197,17 +197,17 @@ export const projects: Project[] = [
     problem:
       "A small brand with a luxury product, a Greek and an EU audience, and Greek payment rules that most gateways don't support.",
     decisions: [
-      "Chose Shopify over WooCommerce from the client briefs — lower maintenance, built-in Markets and payments — and walked the client through why.",
+      "Chose Shopify over WooCommerce from the brand owner's briefs — lower maintenance, built-in Markets and payments — and explained why.",
       "Delivered a second, more luxurious design direction after the first review.",
       "Custom sections: split editorial hero, olfactory-pyramid notes, product showcase, trust bar — on a CSS-token design system.",
       "All hardcoded theme strings moved to locale keys; Greek content bulk-updated through a CSV export → merge → import pipeline.",
       "Researched the Greek IRIS payment mandate: found the bank's gateway had no Shopify integration and proposed a working provider combination.",
       "Git-versioned theme with diff-before-push to live and theme-check.",
-      "Handoff lesson: I built the store as a Shopify Development store, and that type can't be transferred to a client. In one working session I moved it to a store the client owns. The theme went over via CLI and 15 products via CSV. Collections, menus, markets and shipping were rebuilt. Translation CSVs are keyed by store-specific IDs, so a small Python script re-mapped 100 Greek strings by matching their English source text. The domain moved with no DNS changes. It's now a written playbook: a Client transfer store from day one, English as the default language, and ownership transferred only after full payment.",
-      "Launch-day fixes: the catalog showed a placeholder T-shirt instead of the gift card and the footer \"Gift Cards\" link returned 404, because the product handle changed during the move to the client's store. I restored the gift-card handle and added a redirect from the old one. The newsletter heading read as if a fragrance were out of stock, so I rewrote it with the client in English and Greek.",
+      "Handoff lesson: I built the store as a Shopify Development store, and that type can't be transferred to another owner. In one working session I moved it to a store the brand owner controls. The theme went over via CLI and 15 products via CSV. Collections, menus, markets and shipping were rebuilt. Translation CSVs are keyed by store-specific IDs, so a small Python script re-mapped 100 Greek strings by matching their English source text. The domain moved with no DNS changes. It's now a written playbook: a Client transfer store from day one and English as the default language.",
+      "Launch-day fixes: the catalog showed a placeholder T-shirt instead of the gift card and the footer \"Gift Cards\" link returned 404, because the product handle changed during the move to the owner's store. I restored the gift-card handle and added a redirect from the old one. The newsletter heading read as if a fragrance were out of stock, so I rewrote it with the owner in English and Greek.",
     ],
     outcome:
-      "Launched in November 2026 at sokole.eu in English and Greek and handed over to the client, who now runs the store.",
+      "Launched in November 2026 at sokole.eu in English and Greek and handed over to the brand owner, who now runs the store.",
     shots: {
       desktop: { src: "/work/sokole/desktop.jpg", alt: "Sokole storefront hero, English version" },
       mobile: [

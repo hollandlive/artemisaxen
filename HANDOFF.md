@@ -14,8 +14,8 @@ _Составлен 2026-11-15. Источник: код репо, git log, `bib
 
 ## 2. Портфолио
 
-- Главная: `app/page.tsx` → секции в `components/sections/` (Hero, Proof, Work, **Services**, Notes, Experience, Stack, About, Contact).
-- **Позиционирование с 20.11.2026: только фриланс** (Shopify + Next.js), не поиск работы в NL. Тексты: Hero, About, Contact, Experience, `lib/metadata.ts`, `opengraph-image.tsx`.
+- Главная: `app/page.tsx` → секции в `components/sections/` (Hero, Proof, Work, Notes, Experience, Stack, About, Contact).
+- **Позиционирование с 24.11.2026: Full-Stack Developer · Next.js · Shopify, открыт к работе (Афины или удалённо).** Слова «freelance» и «client» убраны с сайта; опыт: 2026 — «Own projects», 2018–2025 — «Independent web projects». Сайт, CV и LinkedIn (имя Artemis Axen) говорят одно и то же — держать их синхронными. Секция Services удалена (есть в git-истории, коммит c97d123). Тексты: Hero, About, Contact, Experience, Notes, `lib/projects.ts` (Sokole), `lib/metadata.ts`, `opengraph-image.tsx`.
 - Кейсы проектов: `lib/projects.ts` (рендер — `components/work/CaseStudy.tsx`, `DeviceShowcase.tsx`; скриншоты в `public/work/<slug>/`):
   - **LiveCity.cam** — Live (livecity.cam); недавно добавлены postmortem cache-stampede и ноябрьские ops-работы.
   - **TravelHub.cam** — Live (travelhub.cam).
@@ -78,7 +78,7 @@ _Составлен 2026-11-15. Источник: код репо, git log, `bib
 - Seedance/Flow AI кредиты закончились. Кандидаты пролога: годится только `495C3C29…` как insert.
 - Пайплайн YouTube (pilot) — нерешённые вопросы из REPORT.md: консистентность лиц, кропы низкого разрешения (~262px), edge-tts vs ElevenLabs, ffmpeg без libass.
 
-## 4. Фриланс — план (20.11.2026)
+## 4. Фриланс — план (20.11.2026) — ⏸ НА ПАУЗЕ с 24.11 (сайт переведён на поиск работы, см. раздел 2)
 Цель: фриланс-заказы на Shopify и Next.js по портфолио. Оплата — **за проект** (fixed price). Shopify и Next.js оба интересны, **приоритет — попробовать Shopify Partner**.
 Личные детали (статус регистрации, где сейчас живёт) — в приватной памяти Claude, **не в этом репо: он публичный**.
 

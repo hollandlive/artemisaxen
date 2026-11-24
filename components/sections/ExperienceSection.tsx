@@ -15,15 +15,15 @@ type Role = {
 const ROLES: Role[] = [
   {
     period:  "2026 – now",
-    title:   "Freelance Developer",
-    company: "Client work & own products",
+    title:   "Full-Stack Developer",
+    company: "Own projects",
     place:   "Remote",
-    detail:  "The Sokole Shopify store for a client; LiveCity.cam, TravelHub.cam and FamilyFound as my own products; AI video for the novel Don't Develop. Next.js, TypeScript, Supabase, Vercel, Shopify. AI-assisted engineering with OpenAI and Claude Code.",
+    detail:  "LiveCity.cam, TravelHub.cam and FamilyFound; the Sokole Shopify store for a Greek fragrance brand; AI video for the novel Don't Develop. Next.js, TypeScript, Supabase, Vercel, Shopify. AI-assisted engineering with OpenAI and Claude Code.",
   },
   {
     period:  "2018 – 2025",
-    title:   "Independent projects",
-    company: "Freelance",
+    title:   "Web Developer",
+    company: "Independent web projects",
     place:   "Remote",
     detail:  "Rebuilt and maintained multilingual WordPress sites, including dutchnews.ru and fastgreece.",
     repos: [

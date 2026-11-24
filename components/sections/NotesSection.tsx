@@ -22,7 +22,7 @@ const NOTES = [
   {
     tag:   "Handoff",
     title: "The store that couldn't be handed over",
-    body:  "I built a client's Shopify store as a Development store. At handoff it turned out that type can't be transferred, can't take a paid plan and can't drop its password. In one session I moved everything to a store the client owns: theme via CLI, products via CSV, Greek translations re-mapped by a script, domain switched without touching DNS. Every client store now starts as a Client transfer store.",
+    body:  "I built the Sokole Shopify store as a Development store. At handoff it turned out that type can't be transferred, can't take a paid plan and can't drop its password. In one session I moved everything to a store the brand owner controls: theme via CLI, products via CSV, Greek translations re-mapped by a script, domain switched without touching DNS. A store built for someone else now starts as a Client transfer store.",
   },
   {
     tag:   "SEO",

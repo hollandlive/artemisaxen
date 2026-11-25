@@ -16,6 +16,7 @@ _Составлен 2026-11-15. Источник: код репо, git log, `bib
 
 - Главная: `app/page.tsx` → секции в `components/sections/` (Hero, Proof, Work, Notes, Experience, Stack, About, Contact).
 - **Позиционирование с 24.11.2026: Full-Stack Developer · Next.js · Shopify, открыт к работе (Афины или удалённо).** Слова «freelance» и «client» убраны с сайта; опыт: 2026 — «Own projects», 2018–2025 — «Independent web projects». Сайт, CV и LinkedIn (имя Artemis Axen) говорят одно и то же — держать их синхронными. Секция Services удалена (есть в git-истории, коммит c97d123). Тексты: Hero, About, Contact, Experience, Notes, `lib/projects.ts` (Sokole), `lib/metadata.ts`, `opengraph-image.tsx`.
+- **Поиск работы (24.11):** CV под имя Artemis Axen — `~/Sites/_freelance/mysten/` (HTML-исходник + PDF, локально, вне git). LinkedIn обновлён: имя, заголовок, опыт 2018–2025 и 2026. Первый отклик отправлен 24.11.2026. Журнал откликов — приватный Google Doc `work_applications` в Google Drive владельца (не в репо).
 - Кейсы проектов: `lib/projects.ts` (рендер — `components/work/CaseStudy.tsx`, `DeviceShowcase.tsx`; скриншоты в `public/work/<slug>/`):
   - **LiveCity.cam** — Live (livecity.cam); недавно добавлены postmortem cache-stampede и ноябрьские ops-работы.
   - **TravelHub.cam** — Live (travelhub.cam).
@@ -133,6 +134,7 @@ Shopify Partners — проверено в Dashboard (20.11):
 
 ## 6. Правила работы
 - Коммит/пуш только по просьбе. Пуш в `main` = деплой.
+- Vercel собирает только `main`. Сборки для ветки `dev` выключены в `vercel.json` (`git.deploymentEnabled.dev: false`): с переходом Standard builds на Pro на оплату по минутам каждая preview-сборка стоит денег. Так же сделано в cams_thumbs и TravelHub.
 - Сюжет сверять с каноном; новые идеи сами по себе не повод менять Truth Bible.
 - Секреты из `.env.local` не выводить.
 - В репо есть тяжёлые бинарники (`bible/*.pdf`, `bible/scenes/ch01/*.MP4`, `backup/*.zip`) — не плодить новые, медиа класть в Vercel Blob.
